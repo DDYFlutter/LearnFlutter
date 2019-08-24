@@ -12,6 +12,8 @@
 * 安装AndroidStudio 
 
 	1. 下载最新版[AndroidStudio](http://www.maczapp.com/15045849668668),  国内[网站](http://www.android-studio.org)或爬梯[官网](https://developer.android.com/studio/index.html)
+	2. 不需要像windows那样配置环境变量，直接拖动安装，打开(不发送统计信息，不导入配置，cancel不能连接SDK,一路默认next，一直到下载完相关组件)
+	3. 欢迎界面选择 configure -> plugins -> 分别搜索Dart Flutter进行安装
 
 
 * 升级homebrew 
@@ -92,13 +94,13 @@
 	```
 7. 使配置生效 ``` source ~/.bash_profile ```
 8. 查看是否成功 ``` flutter -h ```
-9. 安装依赖 ``` flutter doctor ```
+9. 安装依赖 ``` flutter doctor ``` 有叉号提示的需要执行提示命令
 
 注意:   
 
 1. 如果不存在 .bash_profile 则创建 ``` vim ~/.bash_profile ``` 
 2. 如果使用的是其他如 zsh，终端启动时 ~/.bash_profile 将不会被加载，解决办法就是修改 ~/.zshrc ，在其中添加：source ~/.bash_profile
-3. 选择高版本Command Line Tool ： 打开Xcode，按快捷键 'command' + '<'，进入设置面板，找到locations，选择高版本Command Line Tools
+
 
 
 
