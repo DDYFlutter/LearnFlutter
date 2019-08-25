@@ -9,7 +9,7 @@
 	1. 下载最新版[Xcode](https://developer.apple.com/download/more)
 	2. 安装并同意协议后打开(这里默认名字Xcode.app，下同)
 	3. 打开Xcode，按快捷键 'command' + '<'，进入设置面板，找到locations，选择高版本Command Line Tools
-	4. 执行 ``` sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+	4. 执行 ``` sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer ```
 	
 * 安装AndroidStudio 
 
