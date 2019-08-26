@@ -25,6 +25,16 @@
 3. 安装brew ``` ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ```
 4. 查看版本 ``` brew --version ``` 
 5. 安装目录	 ``` which brew ```
+6. 执行下面代码 
+
+	```
+	brew update
+	brew install --HEAD usbmuxd
+	brew link usbmuxd
+	brew install --HEAD libimobiledevice
+	brew install ideviceinstaller
+	brew install ios-deploy
+	```
 
 * 升级rvm
 	
@@ -95,14 +105,33 @@
   	# export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 	```
 7. 使配置生效 ``` source ~/.bash_profile ```
-8. 查看是否成功 ``` flutter -h ```
+8. 查看是否成功 ``` flutter --version ```
 9. 安装依赖 ``` flutter doctor ``` 有叉号提示的需要执行提示命令
 
-注意:   
+	```
+	flutter doctor --android-licenses
+	```
+	如果提示错误，可能要执行 '升级homebrew' 的命令
 
-1. 如果不存在 .bash_profile 则创建 ``` vim ~/.bash_profile ``` 
-2. 如果使用的是其他如 zsh，终端启动时 ~/.bash_profile 将不会被加载，解决办法就是修改 ~/.zshrc ，在其中添加：source ~/.bash_profile
+> ### 方案   
 
+* 如果不存在 .bash_profile     
+创建 ``` vim ~/.bash_profile ```,可能需要执行 '升级homebrew' 的命令
+
+* 如果使用的是其他如 zsh，终端启动时 ~/.bash_profile 将不会被加载    
+解决办法就是修改 ~/.zshrc ，在其中添加：source ~/.bash_profile
+
+* ERROR: Could not connect to lockdownd, error code -17  
+
+	先执行必要卸载命令
+	
+	```
+	brew uninstall --ignore-dependencies libimobiledevice
+	brew uninstall --ignore-dependencies usbmuxd
+	brew install --HEAD usbmuxd
+	brew unlink usbmuxd
+	```
+	然后执行 '升级homebrew' 的命令
 
 
 
