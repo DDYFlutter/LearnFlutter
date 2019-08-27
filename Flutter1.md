@@ -10,6 +10,8 @@
 2. 安装并同意协议后打开(这里默认名字Xcode.app，下同)
 3. 打开Xcode，按快捷键 'command' + '<'，进入设置面板，找到locations，选择高版本Command Line Tools
 4. 执行 ``` sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer ```
+5. 输入 ``` sudo xcode-select --print-path ``` 查看Xcode路径
+6. 在Xcode.xip所在目录执行 ``` xattr -d com.apple.quarantine Xcode_11.xip ``` 解除验证
 	
 * 安装AndroidStudio 
 
@@ -35,6 +37,7 @@
 	brew install ideviceinstaller
 	brew install ios-deploy
 	```
+7. 如果Xcode 版本低,需要安装高版本(可以安装多版本然后选择高版本)
 
 * 升级rvm
 	
