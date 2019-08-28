@@ -1,4 +1,4 @@
-本文对应github地址[Flutter1](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter1.md),如果由于github调整导致资源找不到，请访问[github](https://github.com/DDYFlutter/LearnFlutter)
+本文对应github地址[Flutter2](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter002.md),如果由于github调整导致资源找不到，请访问[github](https://github.com/DDYFlutter/LearnFlutter)
 
 
 > ### 为什么Flutter选择了Dart语言(不用js)
@@ -84,11 +84,30 @@
 	list4.forEach((itemValue) {
 	  print(itemValue);
 	});
-```
+	```
 
-* 级联符号
+* .. 级联符号 在同一对象上进行一系列操作
 
-
+	```
+	class StarInfo {
+	  String name;
+	  printInfo() {
+	    print("${name}");
+	  }
+	}
+	
+	// 常规
+	var starInfo1 = StarInfo();
+	starInfo1.name = "Li Xiaolong";
+	starInfo1.printInfo();
+	// 级联
+	var starInfo2 = StarInfo();
+	starInfo2
+	  ..name = "Li XiaoLong"
+	  ..printInfo(); // 结尾才有分号
+	```
+* Dart 的类不支持public、private这样限制词。_下划线代表私有。
+* 
 
  
  
