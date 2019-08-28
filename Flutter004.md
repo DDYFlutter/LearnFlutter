@@ -61,16 +61,37 @@
 	}
 	```
 
+* 可选参数
+	
+	```
+	// 大括号内同时也是可选参数，没有默认值的为null
+	fullName({var firstName, Object lastName = "Lei"}) => "$firstName $lastName";
+	print(fullName());// null Lei
+	```
+
+* 可选位置参数 用[]包装
+
+	```
+	String msgTwo(String msg, [String time = '2018', String name]){
+	　　if (time == null) {
+	　　　　return msg + " from " + name;
+	　　}
+	
+	　　if (name != null) {
+	　　　　return msg + " with " + time + " from " + name;
+	　　}
+	　　return msg + " with " + time;
+	}
+	```
 
 
+* 关于重载
+
+	Dart不支持方法重载(重载就是方法名相同，参数（个数或类型）不同（称之为签名不同）)但支持命名构造函数
 
 
-
-
-
-
-
-
+```
+```
 
 
 
