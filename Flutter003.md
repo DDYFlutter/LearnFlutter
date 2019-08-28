@@ -248,5 +248,100 @@
 
 > ### Map
 
+* 声明定义
 
+	```
+	// 常规声明
+	var map1 = {'1':"1", 2 : 2}; // 不指定类型，Key-Value 均为 dynamic
+	var map2 = new Map(); // 不指定类型
+	map2["name"] = "LiLei";
+	map2[18] = 18;
+	var map3 = <String, String>{}; // 指定类型，大括号内可以有值
+	map3["nick"] = "Lee";
+	var map4 = Map<String, int>(); // 指定类型，省略new
+	map4["age"] = 18;
+	print("$map1 $map2 $map3 $map4"); // {1: 1, 2: 2} {name: LiLei, 18: 18} {nick: Lee} {age: 18}
+	
+	// 复制形式
+	Map map5 = Map.castFrom(map4); // 从map4复制
+	// map5[19] = 19; // 运行报错，map4类型<String, int>，这里<int, int>，不匹配
+	map5["19"] = 19; // 类型满足，可以添加
+	// Map map6 = Map.castFrom<String, int>(map3); // 报错，map3为<String, String> 这里<String, int>，不匹配
+	print("$map5");
+	
+	// const修饰，不可变Map
+	Map map7 = const {"1":"1"};
+	// map7["2"] = "2";
+	print("$map7");
+	// 根据list创建key-value
+	List<String> keys = ['one','two'];
+	List<String> values = ['Android','IOS'];
+	Map map8 = Map.fromIterables(keys, values); // key-value数量一致，否则报错
+	print(map8);
+	```
 
+* 增删改查
+	
+	```
+	 // 增删改查
+	Map map9 = {"1":"1", "2":"2", "3":"3", "4":"4"};
+	map9["1"] = 2; // 如果key不存在则增加，存在则修改
+	var resultValue1 = map9.update("1", (value) => (value*5)); // 更新值(类型不匹配则报错)
+	var resultValue2 = map9.update("2", (value) => (value+"999"));// 更新值(类型不匹配则报错)
+	//map9.remove("3"); // 删除键值对
+	map9["4"] = ""; // 只是赋空值，不删除
+	map9.updateAll((dynamic key, dynamic value) {
+	  if (key == "4") return '4444';
+	  return value;
+	});
+	print("${resultValue1} ${resultValue2} ${map9}"); // 10 2999 {1: 10, 2: 2999, 3: 3, 4: 4444}
+	
+	Map<String,int> map10 = {"a":1,"b":2,"c":3,"d":4,"e":5};
+	// map10.removeWhere((key,value)=>(value>3));//删除掉 符合参数函数的keyvalue对
+	map10.removeWhere((key,value){
+	  return value>3;
+	});
+	print(map10);//{a: 1, b: 2, c: 3}
+	print("${{"1":"2"}.containsKey("1")} ${{"1":"2"}.containsValue("1")}"); // 是否包含key/value true false
+	
+	// 遍历
+	map10.forEach((String key, int value) => print("$key:$value"));
+	map10.keys.forEach((String key) => print(key));
+	map10.values.forEach((int value) => print(value));
+	// 遍历时可以修改值，不可删除值
+	map10.forEach((String key, int value) {
+	  if (value > 1) map10[key] = 10086;
+	});
+	print(map10); // {a: 1, b: 10086, c: 10086}
+	```
+
+* 常用属性与方法
+
+	```
+	// 常营属性
+	print("${{"1":"1"}.length} ${{"1":"1"}.isEmpty} ${{"1":"1"}.isNotEmpty}"); // 长度，是否空，是否非空 1 false true
+	print("${{"10":"12", "11":"13"}.keys} ${{"11":"13"}.values}"); // key和value各自集合(List) (10, 11) (13)
+	print("${{"10":"12", "11":"13"}.entries}"); // 迭代的键值对集合 (MapEntry(10: 12), MapEntry(11: 13))
+	// 遍历更改范型
+	Map<String,int> map19 = {"a":1,"b":2,"c":3};
+	Map<int,int> map20 = map19.map((String key,int value){
+	  return new MapEntry(value, value);
+	});
+	print(map20); // {1: 1, 2: 2, 3: 3}
+	map19.clear(); // 清空
+	print("$map19"); // {}
+	
+	// 合并（类型一致）
+	Map mapAdd1 = <String, String>{"1":"2"};
+	Map<String, String> mapAdd2 = {"1":"2121", "3":"4"};
+	Map mapAdd3 = <String, String>{"1":"2"};
+	Map<String, String> mapAdd4 = {"1":"2121", "3":"4"}; // key相同则覆盖
+	mapAdd1.addAll(mapAdd2); // key相同则覆盖
+	mapAdd3.addEntries(mapAdd4.entries); // key相同则覆盖
+	print("$mapAdd1 $mapAdd3"); // {1: 2121, 3: 4} {1: 2121, 3: 4}
+	
+	Map putMap = {"1":"1"};
+	String result1 = putMap.putIfAbsent("1", () => "10086"); // 取值，取到则返回取到的值 "1"
+	String result2 = putMap.putIfAbsent("2", () => "10086"); // 取值，取不到返回给定值"10086" 并在原map中添加keyvalue
+	print("$result1 $result2 $putMap"); // 1 10086 {1: 1, 2: 10086}
+	```
