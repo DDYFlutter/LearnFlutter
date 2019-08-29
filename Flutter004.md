@@ -248,7 +248,19 @@
 	testGetSet.nickName = "LiXiaolong";
 	print("${testGetSet.userName}"); // LiXiaolong
 	```
-
+* 重定向构造函数
+	
+	```
+	class Point {
+	  num x, y;
+	 
+	  // 主构造函数
+	  Point(this.x, this.y);
+	 
+	  // 重定向构造函数
+	  Point.alongXAxis(num x) : this(x, 0);
+	}
+	```
 
 > ### 范型
 
