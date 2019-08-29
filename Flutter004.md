@@ -4,86 +4,100 @@
 > 函数
 
 * 函数包含返回值(可省略书写，依靠推断类型，无返回值则void)、函数名、参数组成
-
+	
 	```
-	String fullName(String firstName, String lastName) {
-	  return "$firstName $lastName";
+	// 常规书写
+	String fullName1(String firstName, String lastName) {
+		return "$firstName $lastName";
 	}
-	// 简写，省略返回类型，=>的使用
-	// fullName(String firstName, String lastName) => "$firstName $lastName";
+	
+	// 省略返回类型 箭头函数
+	fullName2(String firstName, String lastName) => "$firstName $lastName";
+	
 	// 参数还可以是var Object dynamic类型，通过实际赋值类型推导
-	// fullName(var firstName, Object lastName) => "$firstName $lastName";
-	print(fullName("Li", "Bai")); // Li Bai
+	fullName3(var firstName, Object lastName) => "$firstName $lastName";
+	
+	// 调用并打印返回值   
+	print(fullName1("Li", "Bai")); // Li Bai
+	print(fullName2("Li", "Bai")); // Li Bai
+	print(fullName3("Li", "Bai")); // Li Bai
 	```
 
 * 命名参数（大括号{}包含）
 
 	```
-	fullName(var firstName, {Object lastName}) => "$firstName $lastName";
-	// 命名参数调用时也得指定参数名
-	print(fullName("Li", lastName: "Bai")); // Li Bai
+	// 命名参数 {}包装(从尾部参数开始)，调用时也得指定参数名
+  	fullName4(var firstName, {Object lastName}) => "$firstName $lastName";
+	
+	// 调用并打印返回值 
+	print(fullName4("Li", lastName: "Bai")); // Li Bai
 	```
-
-* 参数默认值
+* 可选参数(中括号[]包装，命名参数是特殊可选参数用大括号{]包装) 
 
 	```
-	fullName(var firstName, {Object lastName = "Lei"}) => "$firstName $lastName";
-	print(fullName("Li", lastName: "Bai")); // Li Bai
-	print(fullName("Li")); // Li Lei
+	// 可选参数 {}或[]包装都可选(从尾部参数开始) 没有默认值且不赋值则为null
+	fullName5(var firstName, [Object lastName]) => "$firstName $lastName";
+	
+	// 调用并打印返回值 
+	print(fullName5("Li"));// Li null
+	```
+	
+* 参数默认值(没有默认值且不赋值则为null)
+
+	```
+	// 参数默认值 没有默认值且不赋值则为null
+  	fullName6([var firstName, Object lastName = "Lei"]) => "$firstName $lastName";
+	
+	// 调用并打印返回值
+	print(fullName6());// null Lei
 	```
 
 * 函数作参数(函数一等公民)
 
 	```
-	main(List<String> args) {
-	  out(printOutLoud);
-	}
-	 
-	out(void inner(String message)) {
-	  inner('Message from inner function');
-	}
-	 
-	printOutLoud(String message) {
-	  print(message.toUpperCase());
-	}
+	// 函数作参数(函数一等公民)
+  	outerUse(String str, void innerPrint(String msg)) => innerPrint(str);
+  	innerUse(String msg) => print("$msg ${msg.length}");
+  	
+  	// 调用
+  	outerUse("print param", innerUse);
 	```
 * 匿名函数
 
 	```
-	main(List<String> args) {
-	  out((message) {
-	    print(message.toUpperCase());
-	  });
-	}
-	 
-	out(void inner(String message)) {
-	  inner('Message from inner function');
-	}
+	// 匿名函数
+  	anonymousUse() {
+   		outerUse2(String str, void innerPrint(String msg)) => innerPrint(str);
+    	var funcParam = (msg) => print("$msg ${msg.length}");
+    	outerUse2("anonymousUse0", funcParam); // 写成变量然后作参数
+    	outerUse2("anonymousUse1", (msg) => print("$msg ${msg.length}")); // 直接当参数
+    	// 不用箭头函数
+    	outerUse2("anonymousUse2", (msg){
+    		print("$msg ${msg.length}");
+    	});
+  	}
 	```
 
-* 可选参数
+
+
+* 立即执行函数(自执行函数 即定义和调用合为一体)
+
+	```
+	// 创建的匿名函数立即执行，外部无法引用它的内部变量，因此执行完很快被释放，这种机制不会污染全局对象。
+	useNowFunction() {
+		// (function (/* 参数 */) { /* code */ }(/* 参数 */)) // 推荐
+		// (function (/* 参数 */) { /* code */ })(/* 参数 */) // 也能
+		((x, y){
+			print("${x+y}");
+		}(2, 3));
 	
-	```
-	// 大括号内同时也是可选参数，没有默认值的为null
-	fullName({var firstName, Object lastName = "Lei"}) => "$firstName $lastName";
-	print(fullName());// null Lei
-	```
-
-* 可选位置参数 用[]包装
-
-	```
-	String msgTwo(String msg, [String time = '2018', String name]){
-	　　if (time == null) {
-	　　　　return msg + " from " + name;
-	　　}
+		((x, y){
+			print("${x+y}");
+		})(2, 3);
 	
-	　　if (name != null) {
-	　　　　return msg + " with " + time + " from " + name;
-	　　}
-	　　return msg + " with " + time;
-	}
+		((x, y) => print("${x+y}"))(2, 3);
+	}	
 	```
-
 
 * 关于重载
 
@@ -92,7 +106,6 @@
 
 ```
 ```
-
 
 
 
