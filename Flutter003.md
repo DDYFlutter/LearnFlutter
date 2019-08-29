@@ -14,14 +14,16 @@
 * static声明类变量
 * const和final声明常量，const只能通过静态数据赋值, final修饰的list、map仍可变
 
-	```
-	const lastName = 'postbird';
-	final firstName = 'bird';
-	// lastName = '123';  // 报错
-	// firstName = '123'; // 报错
-	final time = new DateTime.now();
-	// const time2 = new DateTime.now(); // 报错
-	```
+    ```
+    const lastName = 'postbird';
+    final firstName = 'bird';
+    // lastName = '123';  // 报错
+    // firstName = '123'; // 报错
+    final time = new DateTime.now();
+    // const time2 = new DateTime.now(); // 报错
+    // 一个 final 变量只能赋值一次:它的值可以在运行时获取
+    //一个 const 变量是编译时常量
+    ```
 * Dart没有public、private等修饰符，_下划线代表private ，但有 @protected 注解 。
 
 > ### 定义类型
@@ -37,10 +39,14 @@
 * var 声明变量，类型推导
 
 	```
-	var doubleNum = 11.1; // 类型推导，double类型
+	var doubleNum1; // dynamic
+	doubleNum1 = 5; // int
+	doubleNum1 = "hhh"; // 转换成String
+	
+	var doubleNum = 11.1; // 声明同时赋值，类型推导，double
 	// doubleNum = "22.2"; // 更改类型，报错
 	doubleNum = 33; // 变量重新赋值
-	print(doubleNum); // 打印，33.0```
+	print("$doubleNum1 $doubleNum"); // 打印，hhh 33.0
 	```
 	
 * Object，所有对象根基类
@@ -397,3 +403,6 @@
 	print(sym2); // Symbol("titan")
 	```
 
+> ### 参考文章
+
+* [Dart的基础语法](https://juejin.im/post/5d1d614df265da1b971a9177)
