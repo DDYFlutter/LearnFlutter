@@ -99,6 +99,25 @@
 	}	
 	```
 
+* 闭包(闭包是函数对象)
+
+	```
+	// num 类型是int double的父类， Function是返回类型(可省略，根据返回值推导类型)
+	Function addClosure1(int addFrom) {
+	  return (num addNum) {
+	    return addFrom + addNum;
+	  };
+	}
+	addClosure2(int addFrom) {
+	  return (num addNum) => addFrom + addNum;
+	}
+	
+	var addMethod = addClosure1(10);
+	print(addMethod(3)); // 13
+	print(addMethod(4)); // 17
+	print(addClosure2(10)(3)); // 13
+	```
+
 * 关于重载
 
 	Dart不支持方法重载(重载就是方法名相同，参数（个数或类型）不同（称之为签名不同）)但支持命名构造函数
