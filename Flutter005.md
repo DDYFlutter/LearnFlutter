@@ -43,7 +43,9 @@
 
 > ### 接口
 
-* 接口也是 abstrack 关键字声明的，并且需要使用 implements 关键字来实现
+* 接口也是 abstract 关键字声明的，并且需要使用 implements 关键字来实现
+
+
 
 
 
