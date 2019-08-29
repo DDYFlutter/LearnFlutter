@@ -107,9 +107,46 @@
 	  ..printInfo(); // 结尾才有分号
 	```
 * Dart 的类不支持public、private这样限制词。_下划线代表私有。
-* 
 
+	```
+	class TestGetSet {
+	  // 私有
+	  String _userName; 
+	  String _nickName;
+	
+	  String get userName {
+	    return _userName ?? _nickName;
+	  }
+	  set userName(String newName) {
+	    _userName = newName;
+	  }
+	  set nickName(String newName) {
+	    _nickName = newName;
+	  }
+	}
+	
+	// 使用
+	var testGetSet = new TestGetSet();
+	testGetSet.nickName = "LiXiaolong";
+	print("${testGetSet.userName}"); // LiXiaolong
+	```
+
+* 操作符
+
+1. 类型测试操作符
+ 
+ 	as : 类型转换    
+ 	is : 当对象是相应类型时返回 true   
+ 	is! : 当对象不是相应类型时返回 true  
+ 
+2. 赋值操作符 
+ 
+ 	AA ?? "99"  // 表示如果 AA 为空，返回99   
+	AA ??= "99" // 表示如果 AA 为空，给 AA 设置成 99   
+	AA ~/99 // AA 对于 99 整除    
  
  
+> ### 参考文章
  
- [Flutter 原理简解](https://juejin.im/entry/5afa9769518825428630a61c)
+* [Dart学习-操作符](https://www.jianshu.com/p/64a6ed7581aa)  
+* [Flutter 原理简解](https://juejin.im/entry/5afa9769518825428630a61c)
