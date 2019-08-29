@@ -60,7 +60,7 @@
   	innerUse(String msg) => print("$msg ${msg.length}");
   	
   	// 调用
-  	outerUse("print param", innerUse);
+  	outerUse("print param", innerUse); // print param 11
 	```
 * 匿名函数
 
@@ -85,8 +85,9 @@
 	```
 	// 创建的匿名函数立即执行，外部无法引用它的内部变量，因此执行完很快被释放，这种机制不会污染全局对象。
 	useNowFunction() {
-		// (function (/* 参数 */) { /* code */ }(/* 参数 */)) // 推荐
-		// (function (/* 参数 */) { /* code */ })(/* 参数 */) // 也能
+		// (function () { }()) // 推荐
+		// (function () { })() // 也能
+		
 		((x, y){
 			print("${x+y}");
 		}(2, 3));
@@ -114,21 +115,114 @@
 	
 	var addMethod = addClosure1(10);
 	print(addMethod(3)); // 13
-	print(addMethod(4)); // 17
+	print(addMethod(4)); // 14
 	print(addClosure2(10)(3)); // 13
 	```
 
-* 关于重载
+* 高级函数(参数不指定类型，默认Object)
+
+	```
+	// 函数可作为对象赋值给变量，也可作参数
+	printElement(element) => print(element);
+	var list = ['LiLei', 'HanMeimei', 'John'];
+	list.forEach(printElement);
+	```
+
+* 命名构造函数
 
 	Dart不支持方法重载(重载就是方法名相同，参数（个数或类型）不同（称之为签名不同）)但支持命名构造函数
 
 
-```
-```
+	```
+	// 测试类 三个命名构造函数
+	class TestNameInitFunc {
+	  int x;
+	  int y;
+	  TestNameInitFunc(){} // 不用分号
+	
+	  TestNameInitFunc.X(int x) {
+	    this.x = x;
+	  }
+	  TestNameInitFunc.Y(int y) {
+	    this.y = y;
+	  }
+	  TestNameInitFunc.XY(int x, int y) {
+	    this.x = x;
+	    this.y = y;
+	  }
+	  
+	  TestNameInitFunc.X2(this.x);
+	  TestNameInitFunc.Y2(this.y);
+	  TestNameInitFunc.XY2(this.x, [this.y = 20]);
+	
+	  printParam() {
+	    if (x != null && y != null) {
+	      print("x:${x.toString()} y:${y.toString()}");
+	    } else if (x != null) {
+	      print("x:${x.toString()}");
+	    } else if(y != null) {
+	      print("y:${y.toString()}");
+	    }
+	  }
+	}
+	
+	// 应用
+	testNameInit() {
+		TestNameInitFunc testX = new TestNameInitFunc.X(1);
+		TestNameInitFunc testY = TestNameInitFunc.Y(2);
+		var testXY = TestNameInitFunc.XY(3, 4);
+		testX.printParam(); // x:1
+		testY.printParam(); // y:2
+		testXY.printParam(); // x:3 y:4
+		
+		var testX2 = TestNameInitFunc.X2(11);
+		var testY2 = TestNameInitFunc.Y2(12);
+		var testXY2 = TestNameInitFunc.XY2(13);
+		testX2.printParam(); // x:11
+		testY2.printParam(); // y:12
+		testXY2.printParam(); // x:13 y:14
+	}
+	```
 
+* 静态方法
 
+	```
+	class TestStaticFunction {
+	  static printParam() {
+	    print("10086");
+	  }
+	}
+	
+	// 调用
+	TestStaticFunction.printParam(); // 10086
+	```
 
+* 单例
 
+	```
+	class Singleton {
+	  /// 单例对象
+	  static Singleton _instance;
+	
+	  /// 内部构造方法，可避免外部暴露构造函数，进行实例化
+	  Singleton._internal();
+	
+	  /// 工厂构造方法，这里使用命名构造函数方式进行声明
+	  factory Singleton.getInstance() => _getInstance();
+	
+	  /// 获取单例内部方法
+	  static _getInstance() {
+	    // 只能有一个实例
+	    if (_instance == null) {
+	      _instance = Singleton._internal();
+	    }
+	    return _instance;
+	  }
+	}	
+	
+	// 调用
+	Singleton singleton  = Singleton. getInstance();
+	```
 
 
 
