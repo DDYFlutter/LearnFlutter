@@ -12,7 +12,7 @@
 * 双引号字符串，分号结尾
 * 函数可以不显式声明返回类型(不写返回类型就成了dynamic类型，自动推导类型)，无return则void类型
 * static声明类变量
-* const和final声明常量，const只能通过静态数据赋值
+* const和final声明常量，const只能通过静态数据赋值, final修饰的list、map仍可变
 
 	```
 	const lastName = 'postbird';
@@ -345,3 +345,55 @@
 	String result2 = putMap.putIfAbsent("2", () => "10086"); // 取值，取不到返回给定值"10086" 并在原map中添加keyvalue
 	print("$result1 $result2 $putMap"); // 1 10086 {1: 1, 2: 10086}
 	```
+
+> ### Iterable
+
+* 按顺序访问的值或元素的集合, List集合也是继承于Iterable
+* List和Set也是Iterable，dart:collection库中同样有很多
+* 部分Iterable集合可以被修改
+  - 向List或Set添加元素将改变对象所有包含的元素。
+  - 向Map添加新的Key会改变所有Map.keys的元素。
+  - 集合改变后，创建的迭代器将提供新的所有元素，元素顺序可能保持也可能不会
+	
+	```
+	var ite0 = Iterable.empty();
+	print(ite0); // ()
+	var ite1 = Iterable.generate(5);
+	print(ite1); // (0, 1, 2, 3, 4)
+	```
+
+> ### Runes
+
+* 在Dart中，Runes代表字符串的UTF-32字符集, 另一种Strings
+* Unicode为每一个字符、标点符号、表情符号等都定义了 一个唯一的数值
+* 由于Dart字符串是UTF-16的字符序列，所以在字符串中表达32的字符序列就需要新的语法了
+* 通常使用\uXXXX的方式来表示, 这里的XXXX是4个16进制的数, 如，心形符号(♥)是\u2665
+* 对于非4个数值的情况，把编码值放到大括号中即可, 如，笑脸emoji (😆) 是\u{1f600}
+* String类有一些属性可以提取rune信息
+
+	```
+	var clapping = '\u{1f44f}';
+	var runes = new Runes('\u2665, \u{1f605}, \u{1f60e}, \u{1f44f}');
+	print(clapping); // 👏
+	print(runes); // (9829, 44, 32, 128517, 44, 32, 128526, 44, 32, 128079)
+	print(new String.fromCharCodes(runes)); // ♥, 😅, 😎
+	```
+
+> ### Symbol
+
+* 一个Symbol对象代表Dart程序中声明的操作符或者标识符
+* 也许不会用到Symbol，但是该功能对于通过名字来引用标识符的情况 是非常有价值的，特别是混淆后的代码，标识符的名字被混淆了，但是Symbol的名字不会改变
+* 使用Symbol字面量来获取标识符的symbol对象，也就是在标识符前面添加一个 # 符号
+
+	
+
+	```
+	// 获取symbol 对象
+	var sym1 = Symbol('name'); 
+	print(sym1); // Symbol("name")
+	
+	// #号创建
+	var sym2 = #titan; 
+	print(sym2); // Symbol("titan")
+	```
+
