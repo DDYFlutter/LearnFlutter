@@ -224,9 +224,33 @@
 	Singleton singleton  = Singleton. getInstance();
 	```
 
+* Getter/Setter
+
+	```
+	class TestGetSet {
+	  // 私有
+	  String _userName; 
+	  String _nickName;
+	
+	  String get userName {
+	    return _userName ?? _nickName;
+	  }
+	  set userName(String newName) {
+	    _userName = newName;
+	  }
+	  set nickName(String newName) {
+	    _nickName = newName;
+	  }
+	}
+	
+	// 使用
+	var testGetSet = new TestGetSet();
+	testGetSet.nickName = "LiXiaolong";
+	print("${testGetSet.userName}"); // LiXiaolong
+	```
 
 
-
+> ### 范型
 
 
 
