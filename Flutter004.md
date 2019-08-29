@@ -252,15 +252,39 @@
 
 > ### 范型
 
+* 泛型就是解决 类 接口 方法的复用性、以及对不特定数据类型的支持(类型校验)
+* 范型可用在参数，返回值，局部变量等处
 
+	1. 类型安全
 
+	尖括号指定数据类型实际是范型的一种特殊应用
+	
+	```
+	var userNames = List<String>();
+	userNames.addAll(['Seth', 'Kathy', 'Lars']);
+	userNames.add(42); // 类型不匹配，报错
+	```
 
+	2. 减少重复的代码
 
-
-
-
-
-
+	```
+	// 不同类型写同样功能的不同方法
+	abstract class ObjectCache {
+	  Object getByKey(String key);
+	  void setByKey(String key, Object value);
+	}
+	
+	abstract class StringCache {
+	  String getByKey(String key);
+	  void setByKey(String key, String value);
+	}
+	
+	// 用范型归纳成一个方法
+	abstract class Cache<T> {
+	  T getByKey(String key);
+	  void setByKey(String key, T value);
+	}
+	```
 
 
 
