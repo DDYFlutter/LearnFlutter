@@ -297,91 +297,16 @@
 	  void setByKey(String key, T value);
 	}
 	```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> ### 简写构造函数	
+
+* 直接用类名加参数方式简写构造函数
+
+```
+class Person {
+	String userName;
+	String passWord;
+	int age;
+	// 简写构造函数
+	Person(this. userName, this.age, [this. passWord = 'admin']);
+}
+```
