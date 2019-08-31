@@ -221,3 +221,35 @@
 	```
 
 * 泛型接口
+
+	```
+	// 范型接口
+	abstract class Storage<T> {
+	  Map mapIn = new Map();
+	  void set(String key, T value);
+	  T get(String key);
+	}
+	
+	class Cache<T> implements Storage<T> {
+	  @override
+	  Map mapIn = new Map();
+	
+	  @override
+	  T get(String key) {
+	    return mapIn[key];
+	  }
+	
+	  @override
+	  void set(String key, T value) {
+	    mapIn[key] = value;
+	    print("success");
+	  }
+	}
+	
+	// 测试范型接口
+	testGeneric() {
+	  Cache cacheTest = new Cache<String>();
+	  cacheTest.set("name", "LiXiaolong");
+	  print("${cacheTest.get("name")}");
+	}
+	```
