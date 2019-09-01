@@ -262,6 +262,19 @@
 	}
 	```
 
+
+* 简写构造函数	 
+
+    ```
+    class Person {
+    	String userName;
+    	String passWord;
+    	int age;
+    	// 直接用类名加参数方式简写构造函数
+    	Person(this. userName, this.age, [this. passWord = 'admin']);
+    }
+    ```	
+
 > ### 范型
 
 * 泛型就是解决 类 接口 方法的复用性、以及对不特定数据类型的支持(类型校验)
@@ -297,21 +310,31 @@
 	  void setByKey(String key, T value);
 	}
 	```
-> ### 简写构造函数	
-
-* 直接用类名加参数方式简写构造函数
-
+	 
+> ### 运算符重载    
+    
+* 运算符重载(operator overloading)是多态的一种。运算符重载通常只是一种语法糖，这种语法对语言的功能没有影响，但是更方便程序员使用。让程序更加简洁，有更高的可读性 
+   
     ```
-    class Person {
-    	String userName;
-    	String passWord;
-    	int age;
-    	// 简写构造函数
-    	Person(this. userName, this.age, [this. passWord = 'admin']);
+    class TestOperator {
+      startTest() {
+        Cat cat1 = new Cat("10");
+        String resultNum = cat1 + "20";
+        print(resultNum);
+      }
     }
-    ```
     
+    class Cat {
+      String hadAteFishNum;
     
+      Cat(this.hadAteFishNum);
+    
+      String operator +(String eatingFishNum) {
+        int resultNum = int.parse(this.hadAteFishNum) + int.parse(eatingFishNum);
+        return resultNum.toString();
+      }
+    }
+    ```    
     
 [上一页 Flutter3 基本类型](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter003.md)   
 [下一页 Flutter5 类、范型和控制流](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter005.md)
