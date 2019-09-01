@@ -130,20 +130,101 @@
 	testGetSet.nickName = "LiXiaolong";
 	print("${testGetSet.userName}"); // LiXiaolong
 	```
+* 运算符(操作符)
 
-* 操作符
+1. 算数运算符(加、减、乘、除、商、余、自加、自减)
 
-1. 类型测试操作符
+    ```
+    print(20 + 2);  // 22   加
+    print(20 - 2);  // 18   减
+    print(20 * 2);  // 40   乘
+    print(20 / 2);  // 10   除
+    print(40 ~/ 3); // 13   商
+    print(40 % 3);  // 1    余
+    
+    // i++
+    int i = 3;
+    var a = i++; // 赋值后i才自加,故a=3
+    print('a=$a,i=$i'); // a=3,i=4
+    
+    // ++i
+    int i = 3;
+    var a = ++i; // 执行赋值前i已经自加,故a=4
+    print('a=$a,i=$i'); // a=4,i=4
+    
+    // i--
+    int i = 3;
+    var a = i--; // 执行赋值后i才自减,故a=3
+    print('a=$a,i=$i'); // a=3,i=2
+    
+    --i
+    int i = 3;
+    var a = --i; // 执行赋值前i已经自减,故a=2
+    print('a=$a,i=$i'); // a=2,i=2
+    ```
+    
+2. 关系运算符(大于、小于、等于、不等于、大于等于、小于等于)
+
+    ```
+    print(10 > 20);     // false    大于
+    print(10 < 20);     // true     小于
+    print(10 == 20);    // false    等于
+    print(10 != 20);    // true     不等
+    print(10 >= 3);     // true  大于等于
+    print(10 <= 3);     // false 小于等于
+    ```
+
+3. 位运算符(位与、位或、位非、异或、左移、右移)
+
+    ```
+    // 位与:& 两个都是1为1 
+    // 位或:| 只要有1就是1
+    // 位非:~ 全取反
+    // 异或:^ 位都不一样为1
+    // 左移:<< 整体左移，不足补0             
+    // 右移:>> 整体右移
+    ```
+
+4. 逻辑运算符(逻辑与、逻辑或、逻辑非)
+
+    ```
+    bool isGreen = true;
+    bool isBlack = false;
+    print("${isGreen && isBlack}"); // false 逻辑与
+    print("${isGreen || isBlack}"); // true  逻辑或
+    print("${!isBlack}");           // true  逻辑非
+    ```
+5. 赋值运算符
+
+    ```
+    =
+    ??      // AA ?? "99" 表示如果 AA 为空，返回99
+    ??=     // AA ??= "99"如果 AA 为空，给 AA 设置成 99
+    +=
+    -=
+    *=
+    /=
+    ~/=
+    %=
+    <<=
+    =>>
+    &=
+    |=
+    ^=
+    ```
+6. 条件表达式
+
+    ```
+    expr1 ? expr2 : expr3 // 三目运算符 如果 if(expr1) expr2 else expr3
+    expr1 ?? expr2 // expr1 ? expr1 : expr2
+    ```   
+    
+7. 类型测试操作符
  
  	as : 类型转换    
  	is : 当对象是相应类型时返回 true   
- 	is! : 当对象不是相应类型时返回 true  
- 
-2. 赋值操作符 
- 
- 	AA ?? "99"  // 表示如果 AA 为空，返回99   
-	AA ??= "99" // 表示如果 AA 为空，给 AA 设置成 99   
-	AA ~/99 // AA 对于 99 整除    
+ 	is! : 当对象不是相应类型时返回 true   
+
  
 > ### JIT 和 AOT
 
@@ -154,6 +235,10 @@
 2. Kernel Snapshots:也是JIT模式，又称为Script Snapshots，和Script不同的是，这种模式执行的是Kernel AST的二进制数据，这里不包含解析后的类和函数以及编译后的代码，所以不能在不同平台之间移植。 Dart Kernel是Dart程序中一种中间语言，可通过 ``` dart --snapshot-kind=kernel --snapshot=xxx.snapshot xxx.dart``` 生成
 3. JIT Application Snapshots:也是JIT模式，执行的是解析过的类和函数以及编译后的代码，所以运行更快，但只能针对32位或64位架构运行，可通过 ``` dart --snapshot-kind=app-jit --snapshot=xxx.snapshot xxx.dart ``` 生成
 4. AOT Application Snapshots:AOT模式，源码被提前编译成特定平台的二进制文件。要用AOT模式，需要```dart2aot```命令，如``` dart2aot xxx.dart xxx.dart.aot ```然后用 ``` dartaotruntime ```命令执行
+ 
+> 断言 assert
+
+* assert(条件) 如果条件不满足，会中断程序的执行，否则继续执行 
  
 > ### 参考文章
  
