@@ -68,11 +68,11 @@
 
 * 导包最好按如下顺序排序(可以空行分隔)
 
-	1. dart sdk内的库
-	2. flutter内的库
-	3. 第三方库
-	4. 自己的库
-	5. 相对路径引用
+1. dart sdk内的库
+2. flutter内的库
+3. 第三方库
+4. 自己的库
+5. 相对路径引用
 
 > ### 一些语法特性
 
@@ -150,10 +150,10 @@
 * JIT(Just In Time):即时编译，在程序运行中将热点代码编译成机器码，以提升开发效率。JIT可以充分利用解释型语言的优点，动态执行源码，而不用考虑平台差异性，JIT模式需要配合DartVM使用。
 * AOT(Ahead Of Time):运行前编译，在程序运行之前，已经编译成对应平台的机器码，不需要在运行中解释编译就可以直接运行，AOT需要使用runtime来执行。
 * 四种编译模式
-    1. Script:最常见的JIT模式，可以直接在虚拟机中执行Dart源码，像解释型语言一样使用。通过 ``` Dart xxx.dart ```直接运行，适合写一些临时脚本。
-    2. Kernel Snapshots:也是JIT模式，又称为Script Snapshots，和Script不同的是，这种模式执行的是Kernel AST的二进制数据，这里不包含解析后的类和函数以及编译后的代码，所以不能在不同平台之间移植。 Dart Kernel是Dart程序中一种中间语言，可通过 ``` dart --snapshot-kind=kernel --snapshot=xxx.snapshot xxx.dart``` 生成
-    3. JIT Application Snapshots:也是JIT模式，执行的是解析过的类和函数以及编译后的代码，所以运行更快，但只能针对32位或64位架构运行，可通过 ``` dart --snapshot-kind=app-jit --snapshot=xxx.snapshot xxx.dart ``` 生成
-    4. AOT Application Snapshots:AOT模式，源码被提前编译成特定平台的二进制文件。要用AOT模式，需要```dart2aot```命令，如``` dart2aot xxx.dart xxx.dart.aot ```然后用 ``` dartaotruntime ```命令执行
+1. Script:最常见的JIT模式，可以直接在虚拟机中执行Dart源码，像解释型语言一样使用。通过 ``` Dart xxx.dart ```直接运行，适合写一些临时脚本。
+2. Kernel Snapshots:也是JIT模式，又称为Script Snapshots，和Script不同的是，这种模式执行的是Kernel AST的二进制数据，这里不包含解析后的类和函数以及编译后的代码，所以不能在不同平台之间移植。 Dart Kernel是Dart程序中一种中间语言，可通过 ``` dart --snapshot-kind=kernel --snapshot=xxx.snapshot xxx.dart``` 生成
+3. JIT Application Snapshots:也是JIT模式，执行的是解析过的类和函数以及编译后的代码，所以运行更快，但只能针对32位或64位架构运行，可通过 ``` dart --snapshot-kind=app-jit --snapshot=xxx.snapshot xxx.dart ``` 生成
+4. AOT Application Snapshots:AOT模式，源码被提前编译成特定平台的二进制文件。要用AOT模式，需要```dart2aot```命令，如``` dart2aot xxx.dart xxx.dart.aot ```然后用 ``` dartaotruntime ```命令执行
  
 > ### 参考文章
  
