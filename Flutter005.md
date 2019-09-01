@@ -183,6 +183,20 @@
 	}
 	```
 
+> ### 枚举
+
+* 枚举是一种特殊的类，通常用来表示相同类型的一组常量
+* 枚举的每一个值都有一个index属性，index从0开始计数。
+* 枚举不能被继承，不能创建实例
+
+```
+enum Animal {
+  cat,
+  dog,
+  bird
+}
+```
+
 > ### 范型
 
 * 范型方法
@@ -253,5 +267,102 @@
 	  print("${cacheTest.get("name")}");
 	}
 	```
+
+> ### 流程控制
+
+* if...else...
+
+    ```
+    bool isSelected = true;
+    String userName = "LiBai";
+    
+    // if (userName) print(userName); // 错误，Dart中必须判断bool类型
+    if (isSelected) {
+        print("selected")
+    } else {
+        print("No");
+    }
+    ```
+* for
+
+    ``` 
+    List nameList = ["1", "2", "3"];
+    // for
+    for (int i = 0; i < nameList.length; i++) {
+      print(nameList[i]);
+    }
+    
+    // forin (.for)
+    for (var value in nameList) {
+      print(value);
+    }
+    
+    // forEach
+    nameList.forEach((itemValue) => print(itemValue));
+    ```
+
+* while
+
+    ```
+    int count = 0;
+    while(count<10) {
+      print("count:$count");
+      count++;
+    }
+    ```
+* do...while
+
+    ```
+    var count = 0;
+    do {
+      print("count:$count");
+      count++;
+    } while(count<10);
+    ```    
+* switch case
+
+```
+enum Animal {
+  cat,
+  dog,
+  bird
+}
+
+
+testSwith(Animal animal) {
+  String mark1 = "A";
+  switch(mark1) {
+    case 'A':
+      print("A");
+      break;
+    case 'B':
+      print("B");
+      break;
+  }
+
+  int mark2 = 1;
+  switch(mark2) {
+    case 1:
+      print("1");
+      break;
+    case 2:
+      print("2");
+  }
+
+  switch(animal) {
+    case Animal.cat:
+      print("cat");
+      break;
+    case Animal.dog:
+    case Animal.bird:
+      print("dog or bird");
+      break;
+  }
+}
+
+
+// 测试
+testSwith(Animal.bird);
+```    
 	
 [上一页 Flutter4 函数和范型基础](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter004.md)	
