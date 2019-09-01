@@ -274,6 +274,20 @@
     	Person(this. userName, this.age, [this. passWord = 'admin']);
     }
     ```	
+* noSuchMethod()
+
+1. 重载noSuchMethod()可以在对象调用不存在的方法或者变量时调用。
+2. 你不能调用一个不存在的方法，除非是以下情况的一种：
+    + 一个静态类型的dynamic的变量
+    + 接收方有一个定义未实现的方法的静态类型(抽象的也可以)，并且接收方是dynamic并且有一个noSuchMethod()的实现，与类Object中的实现不同。
+
+    ```
+    @override
+    void noSuchMethod(Invocation invocation) {
+        print('You tried to use a non-existent member: ' +
+            '${invocation.memberName}');
+    }
+    ```    
 
 > ### 范型
 
