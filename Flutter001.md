@@ -149,4 +149,8 @@
 [Flutter中文网](https://flutterchina.club/flutter-for-ios/)   
 [Flutter开发环境配置](https://segmentfault.com/a/1190000016878485)    
 [搭建Flutter-iOS开发环境](https://www.cnblogs.com/lovestarfish/p/10628205.html)    
-[Mac系统安装AndroidStudio](https://www.jianshu.com/p/d6421d2d62df)
+[Mac系统安装AndroidStudio](https://www.jianshu.com/p/d6421d2d62df)   
+[flutter环境配置详解MAC版](https://www.jianshu.com/p/b50a92afbef1)
+
+
+[下一页 Flutter2 入门知识](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter002.md)
