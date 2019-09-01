@@ -253,3 +253,5 @@
 	  print("${cacheTest.get("name")}");
 	}
 	```
+	
+[上一页 Flutter4 函数和范型基础](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter004.md)	
