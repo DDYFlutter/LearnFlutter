@@ -301,12 +301,17 @@
 
 * 直接用类名加参数方式简写构造函数
 
-```
-class Person {
-	String userName;
-	String passWord;
-	int age;
-	// 简写构造函数
-	Person(this. userName, this.age, [this. passWord = 'admin']);
-}
-```
+    ```
+    class Person {
+    	String userName;
+    	String passWord;
+    	int age;
+    	// 简写构造函数
+    	Person(this. userName, this.age, [this. passWord = 'admin']);
+    }
+    ```
+    
+    
+    
+[上一页 Flutter3 基本类型](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter003.md)   
+[下一页 Flutter5 类、范型和控制流](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter005.md)
