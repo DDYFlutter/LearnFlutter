@@ -321,48 +321,74 @@ enum Animal {
     ```    
 * switch case
 
-```
-enum Animal {
-  cat,
-  dog,
-  bird
-}
+	```
+	enum Animal {
+	  cat,
+	  dog,
+	  bird
+	}
+	
+	
+	testSwith(Animal animal) {
+	  String mark1 = "A";
+	  switch(mark1) {
+	    case 'A':
+	      print("A");
+	      break;
+	    case 'B':
+	      print("B");
+	      break;
+	  }
+	
+	  int mark2 = 1;
+	  switch(mark2) {
+	    case 1:
+	      print("1");
+	      break;
+	    case 2:
+	      print("2");
+	  }
+	
+	  switch(animal) {
+	    case Animal.cat:
+	      print("cat");
+	      break;
+	    case Animal.dog:
+	    case Animal.bird:
+	      print("dog or bird");
+	      break;
+	  }
+	}
+	
+	
+	// 测试
+	testSwith(Animal.bird);
+	```    
+	
+* break 立即结束整个控制流语句的执行
 
+	```
+	String mark1 = "A";
+	  switch(mark1) {
+	    case 'A':
+	      print("A");
+	      break;
+	    case 'B':
+	      print("B");
+	      break;
+	}
+	```
 
-testSwith(Animal animal) {
-  String mark1 = "A";
-  switch(mark1) {
-    case 'A':
-      print("A");
-      break;
-    case 'B':
-      print("B");
-      break;
-  }
+* continue 停止当前循环不再往下执行，进入下次循环。即“完成了当前的循环迭代”而没有离开循环。
 
-  int mark2 = 1;
-  switch(mark2) {
-    case 1:
-      print("1");
-      break;
-    case 2:
-      print("2");
-  }
-
-  switch(animal) {
-    case Animal.cat:
-      print("cat");
-      break;
-    case Animal.dog:
-    case Animal.bird:
-      print("dog or bird");
-      break;
-  }
-}
-
-
-// 测试
-testSwith(Animal.bird);
-```    
+	```
+	List nameList = ["1", "2", "3"];
+	// for
+	for (int i = 0; i < nameList.length; i++) {
+	  if (i ==1) continue;
+	  print(nameList[i]);
+	}
+	```	
 	
 [上一页 Flutter4 函数和范型基础](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter004.md)	
+[下一页 Flutter6 包、异常、异步和库](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter006.md)
