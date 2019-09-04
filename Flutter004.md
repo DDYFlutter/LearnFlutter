@@ -274,6 +274,92 @@
     	Person(this. userName, this.age, [this. passWord = 'admin']);
     }
     ```	
+
+* 子类构造函数    
+ 
+	```
+	class Animal {
+	  String name;
+	
+	  Animal.createInstance() {
+	    print('Animal Class ${name}');
+	    name = "+++";
+	    print('Animal Class ${name}');
+	  }
+	}
+	
+	class Dog extends Animal {
+	  String name;
+	  // 注意中间逗号
+	  Dog.createInstance(): name = '!!!', super.createInstance() {
+	    print('Dog Class ${name}');
+	    name = "???";
+	    print('Dog Class ${name}');
+	  }
+	}
+	// Animal Class !!!
+	// flutter: Animal Class +++
+	// flutter: Dog Class +++
+	// flutter: Dog Class ???
+	// 先name = '!!!' 然后super 最后self
+	```    
+
+* 工厂构造函数
+    
+```
+// factory不总是创建新实例(如可能从缓存中返回实例或返回子类型实例)
+class DDYLogger {
+  final String logKey;
+  static final _cache = new Map<String, DDYLogger>();
+
+  factory DDYLogger(String logKey) {
+    if (_cache.containsKey(logKey)) {
+      return _cache[logKey];
+    } else {
+      final logger = DDYLogger._init(logKey);
+      _cache[logKey] = logger;
+      return logger;
+    }
+  }
+
+  DDYLogger._init(this.logKey);
+}
+```    
+
+* 静态构造函数
+
+```
+class Student {
+  final String name;
+  final int age;
+
+  const Student(this.name, this.age);
+}
+
+
+// 测试
+var student1 = const Student('LiLei', 18);
+var student2 = const Student('LiLei', 18);
+var student3 = Student('LiLei', 18);
+// identical(obj1, obj2) 比较是否一个对象
+print(identical(student1, student2)); // true
+print(identical(student1, student3)); // false
+print(student1 == student2); // true
+print(student1 == student3); // false
+
+const studentClass1 = [Student('LiLei', 18), Student('LiLei', 18)];
+print('${studentClass1[0] == studentClass1[1]}'); // true
+print('${identical(studentClass1[0], studentClass1[1])}'); // ture
+// 等于了 const studentClass = const [const Student('LiLei', 18), const Student('LiLei', 18)];
+
+var studentClass2 = const [Student('LiLei', 18), Student('LiLei', 18)];
+print('${studentClass2[0] == studentClass2[1]}'); // true
+print('${identical(studentClass2[0], studentClass2[1])}'); // ture
+
+print(studentClass1 == studentClass2); // ture
+print(identical(studentClass1, studentClass2)); // ture
+```
+    
 * noSuchMethod()
 
 1. 重载noSuchMethod()可以在对象调用不存在的方法或者变量时调用。
