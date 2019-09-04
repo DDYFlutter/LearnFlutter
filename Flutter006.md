@@ -48,6 +48,15 @@
 
 > ### 库
 
+* Dart2中可以用library声明库名(也可以不用)
+* 不同类型库的引入方式
+    - Dart语言内部库，import 'dart:html'
+    - Flutter库文件，import 'path/name.dart'
+    - 三方库，import 'package:path/name.dart'
+    - URI文件，import 'https://xxx/name.dart'
+* 引入的库可以用as起别名，防止库变量名或函数名冲突(调用时用newName.methodName)
+* 引入时用show/hide关键字可以单独引入或剔除库中某Api
+
 
 
 > ### 知识点
