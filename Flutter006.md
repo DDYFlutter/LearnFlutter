@@ -9,6 +9,25 @@
 * pub build(用于构建Web应用程序，创建一个包含所有相关脚本的构建文件夹)
 * pub help(将提供所有pub命令的帮助。)
 
+> ### URI
+
+* 编码解码与组装拆分
+
+	```
+	// <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
+	// https://<host>:<端口>/<路径>?<查询>#<片段>
+	var uri1 = 'https://github.com/starainDou?tab=repositories';
+	var encodeFullURI = Uri.encodeFull(uri1);
+	var encodeComponentURI = Uri.encodeComponent(uri1);
+	
+	var uri2 = Uri(scheme: 'https', host: 'google.com', path: '/News/today', fragment: 'frag');
+	var uri3 = Uri.parse('htps://google.com/News/tody#frag');
+	
+	print('${Uri.decodeFull(encodeFullURI)}'); //  https://github.com/starainDou?tab=repositories
+	print('${Uri.decodeComponent(encodeComponentURI)}'); //  https://github.com/starainDou?tab=repositories
+	print('${uri2}'); //  https://google.com/News/today#frag
+	print('${uri3}'); //  htps://google.com/News/tody#frag
+	```
 
 > ### 异常与调试
 
