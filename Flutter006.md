@@ -50,6 +50,30 @@
 
 
 
+> ### 知识点
+
+* 获取一些尺寸
+
+	```
+	// 屏幕宽高
+	var ScreenSize = MediaQuery.of(context).size;
+	// 状态栏高度
+	var StatusHeight = MediaQuery.of(context).padding.top;
+	```
+
+* 判断设备类型
+
+	```
+	import 'dart:io';
+	
+	if ( Platform.isIOS) { } else if (Platform.isAndroid) { } 
+	// Platform.isMacOS 
+	// Platform.isWindows
+	// Platform.isLinux
+	// Platform.isFuchsia
+	```
+
+
 
 https://www.yiibai.com/dart/dart_programming_packages.html
 
