@@ -390,5 +390,5 @@ enum Animal {
 	}
 	```	
 	
-[上一页 Flutter4 函数和范型基础](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter004.md)	
+[上一页 Flutter4 函数和范型基础](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter004.md)	  
 [下一页 Flutter6 包、异常、异步和库](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter006.md)
