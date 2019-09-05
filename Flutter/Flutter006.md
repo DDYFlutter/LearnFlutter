@@ -394,5 +394,5 @@ testZone() {
 	```
 
 
-[Flutter5 类、范型和流程控制](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter005.md)   
+[上一页 Flutter5 类、范型和流程控制](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter005.md)      
 [下一页 Flutter7 网络和数据解析](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter007.md)
