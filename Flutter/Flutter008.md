@@ -13,9 +13,11 @@
 * Flutter中一般json数据从String转Object过程都先经过Map类型
 * Flutter中InheritedWidget一般用于状态共享，如Theme、Localizations、MediaQuery等，都是通过它实现共享状态，可通过context去获取共享的状态，如ThemeData theme = Theme.of(context);
 
---> RenderObject markNeedsPaint() --> PipelineOwner requestVisualUpdate()
---> RendererBinding scheduleFrame() --> ui.Window scheduleFrame()
---> ui.Window onDrawFrame() --> SchedulerBinding handleDrawFrame()
---> RendererBinding drawFrame() --> RenderObject paint
+```
+-->1 RenderObject markNeedsPaint()   -->2 PipelineOwner requestVisualUpdate()  
+-->3 RendererBinding scheduleFrame() -->4 ui.Window scheduleFrame()          
+-->5 ui.Window onDrawFrame()         -->6 SchedulerBinding handleDrawFrame()   
+-->7 RendererBinding drawFrame()     -->8 RenderObject paint                  
+```  
 
 > ### MeterialApp
