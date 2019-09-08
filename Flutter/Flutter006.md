@@ -94,8 +94,8 @@ testZone() {
 
 * 简介
 
-	* Flutter 默认单线程处理任务，如果不开启新线程，那么默认在主线程处理。
-	* Dart中有个介于进程和线程之间的概念被称为Isolate，且更偏向进程概念。
+	* Flutter 是单线程模型，默认单线程处理任务。
+	* Dart中有个介于进程和线程之间的概念被称为Worker-Isolate(实际更偏向进程概念)，但一般理解成带有独立内存的线程。
 	* Dart中Isolate不等同于线程，Isolate有线程和独立内存构成，又比进程低级
 	* Dart异步调用中三个关键字 async、await、Future。async和await要配套使用。
 	
