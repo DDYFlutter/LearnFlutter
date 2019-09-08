@@ -173,7 +173,10 @@ testZone() {
 	
 * async await	
 
-	* Dart中可通过async和await进行异步操作，async开启异步操作，返回一个Future结果(没有返回值则返回null的Future)。
+	* Dart中可通过async和await进行异步操作
+	* async开启异步操作，返回一个Future结果(没有返回值则返回null的Future，耗时操作要执行一段时间但Future却立即返回)。
+	* await表达式通常返回Future,若不是Future则Dart把该值放到Future中返回，await会阻塞当前执行直到对象返回
+	* await可以多次使用(只能在async包装内)
 
 * Future
 	
@@ -181,6 +184,8 @@ testZone() {
 	* 定义在 ``` dart:async ```中，基于观察者模式。
 	* 支持范型
 	* Future 需要 import 'dart:io';（'dart:async';）
+	* Future中常用方法then(),whenComplete(),wait(),catchError()
+	
 	
 	```
 	getChatMessage1(String userName) {
@@ -335,6 +340,15 @@ testZone() {
 * 使用loadLibrary()进行加载可以多次调用但只执行一次，返回Future对象
 * 延迟加载能1.减少App启动时间，2.延迟加载那些较少使用的功能
 
+5. 依赖第三方库
+
+* 在pubspec.yaml文件内dependencies:标签下添加依赖如```cupertino_icons: ^0.1.2```
+* 添加依赖后可以用```flutter packages get```命令或工具栏packages get 按钮 下载包
+* pubspec.lock文件可查看导入依赖的兼容版本
+* ^version 表示version<=libVersion < big version
+* 常规依赖：dependencies:此标签下依赖在调试和发版后都会生效
+* Dev依赖：dev_dependencies:此标签下的依赖均在调试时生效
+* 重写依赖：dependency_overrides:强制下载依赖包，不管是否兼容，不推荐使用
 
 > ### 知识点
 
