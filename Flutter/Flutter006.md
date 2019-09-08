@@ -313,6 +313,13 @@ testZone() {
 	* URI文件，import 'https://xxx/name.dart'
 * 引入的库可以用as起别名，防止库变量名或函数名冲突(调用时用newName.methodName)
 * 引入时用show/hide关键字可以单独引入或剔除库中某Api
+* export重新导入库
+    * 当导入的库过多或要重新整合库，可以通过export重新导入，把部分库或全部库来组合或重新打包库
+    * export也有show和hide，但没有as库前缀
+    * 使用export重新导入多个库，同名成员(类，方法，变量)会冲突
+    * export重新导入的库相当于把库内代码复制到当前文件，但在当前文件并不能使用，因为Dart不存在重载机制，所以会出现冲突
+    * 部分冲突可以用hide来将冲突部分隐藏来解决
+* part和part of关联文件和库
 
 3. 库的拆分
 
@@ -320,11 +327,13 @@ testZone() {
 * part关联的文件，共享所有的命名空间，共享所有对象(包括私有对象)
 * 如果使用part拆分，则必须用library声明
 * part引入的文件可以使用url但不推荐，如part "https://xxx/xx.dart";
+* part优先级高于import，所以当前库可以直接用part中的内容
 
 4. 延迟加载
 
 * 使用deferred as 可以实现库的延迟加载。
-
+* 使用loadLibrary()进行加载可以多次调用但只执行一次，返回Future对象
+* 延迟加载能1.减少App启动时间，2.延迟加载那些较少使用的功能
 
 
 > ### 知识点
