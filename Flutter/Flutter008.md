@@ -181,29 +181,74 @@
 	);
 	```
 
-* title 标题 String
+9. title 
+
+* 标题 (Android任务管理器程序快照上，iOS导航控制器上)
+* 类型为 String
+
+	```
+	// MeterialApp
+	title: 'FirstTitle',
+	```
+
+10. onGenerateTitle 
+
+* 生成标题 (和title一样，但有context参数用于本地化)
+* 类型为 GenerateAppTitle
+
+	```
+	// MeterialApp
+	onGenerateTitle: (context) { return 'SecondTitle';},
+	```
 
 
+11. color 
 
-* onGenerateTitle 生成标题 GenerateAppTitle
+* 颜色 
+* 类型为 Color
+
+	```
+	// MeterialApp
+	color: Colors.blue
+	```
+
+12. theme 
+
+* 主题 (应用程序的主题管理)
+* 类型为 ThemeData
+	
+	```
+	// MeterialApp
+	theme: ThemeData( primarySwatch: Colors.red ),
+	```
 
 
+13. darkTheme 
 
-* color 颜色 Color
-
-
-
-* theme 主题 ThemeData
+* 暗黑主题 
+* 类型为 ThemeData
 
 
+14. locale 
 
-* darkTheme 暗黑主题 ThemeData
+* 地点 (当前区域,如果为null则使用系统区域，可用于语言切换)
+* 类型为 Locale
+
+```
+
+```
 
 
-
-* locale 地点 Locale
 * localizationsDelegates 本地化代理 Iterable<LocalizationsDelegate<dynamic>>
+
+
+
+
 * localeListResolutionCallback 
+
+
+
+
 * localeResolutionCallback,
 * supportedLocales = const <Locale>[Locale('en', 'US')],
 * debugShowMaterialGrid = false,
