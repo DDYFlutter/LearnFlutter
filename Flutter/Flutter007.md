@@ -71,6 +71,10 @@ _testDio() async {
 > ### 参考文章
 
 * [Flutter中好用的网络操作](http://www.flutterj.com/?post=98)
+* [强大的Flutter Http请求开源库-dio](https://www.jianshu.com/p/bd4c2dc5e97f)
+
+
+
 	
 [上一页 Flutter6 包、异常、异步和库](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter006.md)    
 [下一页 Flutter8 widget](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter008.md)
