@@ -264,6 +264,18 @@ testZone() {
 	}
 	```
 	
+	下面是一个then()和whenComplete()结合使用的例子
+	
+	```
+	var client = new http.Client();
+	client.post(
+	    "http://example.com/fruit",
+	    body: {"name": "apple", "color": "red"})
+	  .then((response) => client.get(response.bodyFields['uri']))
+	  .then((response) => print(response.body))
+	  .whenComplete(client.close);
+	```	
+	
 
 * Stream
 
@@ -518,6 +530,37 @@ testZone() {
 	print('${uri2}'); //  https://google.com/News/today#frag
 	print('${uri3}'); //  htps://google.com/News/tody#frag
 	```
+
+> ### 搜集一些三方库
+
+* 网络请求[http](https://pub.dartlang.org/packages/http)
+
+	包含一组高级函数和类，可轻松使用HTTP资源。与平台无关，可在命令行和浏览器上用
+
+* 网络请求[dio](https://pub.dartlang.org/packages/dio)
+
+	一个强大的Http客户端，支持拦截器、全局配置、FormData、请求取消、文件下载、超时等
+
+* 图片选择[photo](https://pub.dev/packages/photo)
+
+	用于选择图像，支持多选，而且这个是用Flutter做的UI，可以很方便的自定义修改
+
+* 图片加载[image](https://pub.dartlang.org/packages/image)
+
+	提供以各种不同的文件格式加载、保存和操作图像的能力。该库不依赖于dart:io
+	
+* svg图片[flutter_svg](https://pub.dartlang.org/packages/flutter_svg)	
+	加载svg图像
+
+* 图片查看[zoomable_image](https://pub.dartlang.org/packages/zoomable_image)
+
+	提供图像查看和手势缩放操作功能
+	
+* 日历[flutter_calendar](https://pub.dartlang.org/packages/flutter_calendar)	
+
+
+[参考](https://www.jianshu.com/p/06d195d14ce1)
+
 
 
 [上一页 Flutter5 类、范型和流程控制](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter005.md)      
