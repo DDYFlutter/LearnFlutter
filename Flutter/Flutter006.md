@@ -94,10 +94,11 @@ testZone() {
 
 * 简介
 
-	* Flutter 是单线程模型，默认单线程处理任务。
-	* Dart中有个介于进程和线程之间的概念被称为Worker-Isolate(实际更偏向进程概念)，但一般理解成带有独立内存的线程。
+	* Dart是单线程模型，默认单线程处理任务。
+	* Dart中有个介于进程和线程之间的概念被称为Worker-Isolate(实际更偏向进程概念)，但一般理解成带有独立内存的线程，防止歧义，统一称作Isolate、隔离。
 	* Dart中Isolate不等同于线程，Isolate有线程和独立内存构成，又比进程低级
-	* Dart异步调用中三个关键字 async、await、Future。async和await要配套使用。
+	* Dart中的异步机制涉及到的关键字有Future、async、await、async、sync、Iterator、Iterable、Stream、Timer等
+	* Dart异步调用中async和await要配套使用,且await可以多个。
 	
 
 * Isolate
@@ -178,15 +179,6 @@ testZone() {
 	* await表达式通常返回Future,若不是Future则Dart把该值放到Future中返回，await会阻塞当前执行直到对象返回
 	* await可以多次使用(只能在async包装内)
 
-* Future
-	
-	* Future 简单了说就是对 Zone 的封装使用，如Future.microtask主要执行了Zone的 scheduleMicrotask，而result._complete最后调用的是 _zone.runUnary等
-	* 定义在 ``` dart:async ```中，基于观察者模式。
-	* 支持范型
-	* Future 需要 import 'dart:io';（'dart:async';）
-	* Future中常用方法then(),whenComplete(),wait(),catchError()
-	
-	
 	```
 	getChatMessage1(String userName) {
 	  print('111: ${queryDatebase(userName)}');
@@ -206,6 +198,72 @@ testZone() {
 	getChatMessage1('LiLei'); // 111: Instance of 'Future<String>'
 	getChatMessage2('LiBai'); // 3秒后打印  333: 20190808 LiBai
 	```
+
+* Future
+	
+	* Future 简单了说就是对 Zone 的封装使用，如Future.microtask主要执行了Zone的 scheduleMicrotask，而result._complete最后调用的是 _zone.runUnary等
+	* 定义在 ``` dart:async ```中，基于观察者模式。
+	* 支持范型
+	* Future 需要 import 'dart:io';（'dart:async';）
+	* Future中常用方法then(),whenComplete(),wait(),catchError()
+	* 一般来说，如果需要监听“完毕”这个状态，那么用whenComplete,需要监听“成功”这个状态，用then，需要监听“失败”这个状态，用catchError
+	
+
+	```
+	class _TestFutureFunction {
+	
+	  // then()回调中带参数，此参数为Future对象中包含的值
+	  testThen() {
+	    getNumber1().then((aNum) {
+	      print('a = $aNum');
+	      return getNumber2(aNum);
+	    }).then((_) {
+	      print('_ = $_');
+	      getResult(_);
+	    });
+	  }
+	
+	  // whenComplete()中不带参数,只指定了顺序，此方法抛出异常后使用相当于finally
+	  testWhenComplete() {
+	    getNumber1().whenComplete((){
+	      getNumber2(9).whenComplete((){
+	        getResult(7).then((_){
+	          print('TestWhenComplete');
+	        });
+	      });
+	    });
+	  }
+	
+	  // 使用async await
+	  testAwait() async {
+	    var number1 = await getNumber1();
+	    var number2 = await getNumber2(number1);
+	    print(await getResult(number2));
+	  }
+	  
+	  // wait()方法, wait()方法内的异步方法，要有await表达式
+	  testWait() {
+	    Future.wait([getNumber1(), getNumber2(2), getResult(4)]).then((List result){
+	      result.forEach((num) => print(num));
+	    });
+	  }
+	
+	  Future<int> getNumber1() async {
+	    await print('getNumber1 10086');
+	    return 10086;
+	  }
+	
+	  Future getNumber2(int num) async {
+	    await print('getNumber2 ${num + 2}');
+	    return num + 2;
+	  }
+	
+	  Future getResult(int num) async {
+	    await print('getRusult');
+	  }
+	}
+	```
+	
 
 * Stream
 
