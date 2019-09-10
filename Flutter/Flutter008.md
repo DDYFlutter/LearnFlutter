@@ -234,32 +234,114 @@
 * 地点 (当前区域,如果为null则使用系统区域，可用于语言切换)
 * 类型为 Locale
 
-```
-
-```
-
-
-* localizationsDelegates 本地化代理 Iterable<LocalizationsDelegate<dynamic>>
+	```
+	locale: Locale('zh', 'CH');
+	```
 
 
+15. localizationsDelegates 
+* 本地化代理 (用于更改Flutter Widget默认的提示语，按钮text等)
+* Iterable<LocalizationsDelegate<dynamic>>
 
 
-* localeListResolutionCallback 
+16. localeListResolutionCallback 
+17. localeResolutionCallback (当传入不支持的语种，根据这个回调，返回相近且支持的语种)
+18. supportedLocales = const <Locale>[Locale('en', 'US')], (传入支持的语种数组)
+19. debugShowMaterialGrid = false, (debug模式是否显示MaterialGrid，使用就不写了)
+20. showPerformanceOverlay = false,(显示GPU和UI曲线图查看当前流畅度情况)
+21. checkerboardRasterCacheImages = false,(true打开光栅缓存图像的棋盘格)
+22. checkerboardOffscreenLayers = false,(true打开呈现到屏幕位图的层的棋盘格)
+23. showSemanticsDebugger = false,(true打开Widget边框)
+24. debugShowCheckedModeBanner = true,(true在debug模式下显示右上角的debug字样)
 
 
+> ### Scaffold
 
 
-* localeResolutionCallback,
-* supportedLocales = const <Locale>[Locale('en', 'US')],
-* debugShowMaterialGrid = false,
-* showPerformanceOverlay = false,
-* checkerboardRasterCacheImages = false,
-* checkerboardOffscreenLayers = false,
-* showSemanticsDebugger = false,
-* debugShowCheckedModeBanner = true,
+1. appBar
+
+* 顶部栏，类似Android中ActionBar,ToolBar iOS中NavigationBar
+
+2. body
+
+* 当前界面所显示的内容Widget
+
+3. floatingActionButton
+
+* 主要功能浮动按钮(有人叫他 悬浮球、FAB)，默认56dp,mini为40dp
+
+4. floatingActionButtonLocation
+
+* 
+
+5. floatingActionButtonAnimator
+
+* 
 
 
+6. persistentFooterButtons
 
+* 固定在下方显示的按钮，比如对话框下方确定、取消按钮
+
+
+7. drawer
+
+* 侧边(左边)抽屉型控件
+
+
+8. endDrawer
+
+* 右侧抽屉型控件
+
+
+9. bottomNavigationBar
+
+* 底部导航栏，类似iOS中UITabbar
+
+
+10. bottomSheet
+
+* 
+
+
+11. backgroundColor
+
+* 内容背景色，默认ThemeData.scaffoBackgroundColor值
+
+
+12. resizeToAvoidBottomPadding
+
+* 控制界面内容是否重新布局来避免底部被覆盖了，默认值为 true
+* 比如当键盘显示的时候，重新布局避免被键盘盖住内容。
+* 类似android.windowSoftInputMode = "adjustResize"。
+
+
+13. resizeToAvoidBottomInset
+
+* 
+
+
+14. primary = true
+
+* 
+
+
+15. drawerDragStartBehavior = DragStartBehavior.start
+
+* 
+
+
+16. .extendBody = false
+
+* 
+
+
+17. drawerScrimColor
+
+
+> ### 参考
+
+* [Material Design设计规范](https://www.uisdc.com/material-design-knowledge)
 
 
 [Flutter7](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter007.md)
