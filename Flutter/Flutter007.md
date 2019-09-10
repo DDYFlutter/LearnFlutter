@@ -25,6 +25,8 @@ _testNativeNetRequest() async {
 
 > ### http
 
+* get
+
 ```
 // 测试HTTP https://pub.dartlang.org/packages/http
 _testLibraryHttp() async {
@@ -43,6 +45,15 @@ _testLibraryHttp() async {
 }
 ```
 
+* post
+
+```
+var url = 'https://xxx.com/buy';
+http.post(url, body: {"name": "apple", "color": "red"})
+    .then((response) {
+	  print("status: ${response.statusCode} body: ${response.body}");
+});
+```
 
 > ### dio
 
@@ -72,6 +83,9 @@ _testDio() async {
 
 * [Flutter中好用的网络操作](http://www.flutterj.com/?post=98)
 * [强大的Flutter Http请求开源库-dio](https://www.jianshu.com/p/bd4c2dc5e97f)
+* [异步-IO+网络访问+json](https://juejin.im/post/5c1cd2426fb9a049a711cb75)
+* [浅尝flutter中的http请求](https://www.jianshu.com/p/fdf11278a95f)
+* 
 
 
 
