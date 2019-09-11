@@ -173,18 +173,113 @@
 
 * 继承关系 Object > Diagnosticablet > DiagnosticableTreet > Widgett > StatefulWidgett > Image
 * 支持的格式jpeg、png、gif、webP、bmp、webmp
-* new Image: 从ImageProvider获取图像。
-* new Image.asset: 加载本地图片文件。
-* new Image.file： 加载本地图片文件。
-* new Image.network: 加载网络图片。
-* new Image.memory: 加载Uint8List资源图片。
+* new Image: 从ImageProvider获取图像
+
+	```
+	const Image({
+		Key key,
+		@required this.image,
+		this.frameBuilder,
+		this.loadingBuilder,
+		this.semanticLabel,
+		this.excludeFromSemantics = false,
+		this.width,
+		this.height,
+		this.color,
+		this.colorBlendMode,
+		this.fit,
+		this.alignment = Alignment.center,
+		this.repeat = ImageRepeat.noRepeat,
+		this.centerSlice,
+		this.matchTextDirection = false,
+		this.gaplessPlayback = false,
+		this.filterQuality = FilterQuality.low,
+	}) 
+	```
+
+* new Image.asset: 加载本地图片文件
+
+	```
+	Image.asset(
+		String name, {
+		Key key,
+		AssetBundle bundle,
+		this.frameBuilder,
+		this.semanticLabel,
+		this.excludeFromSemantics = false,
+		double scale,
+		this.width,
+		this.height,
+		this.color,
+		this.colorBlendMode,
+		this.fit,
+		this.alignment = Alignment.center,
+		this.repeat = ImageRepeat.noRepeat,
+		this.centerSlice,
+		this.matchTextDirection = false,
+		this.gaplessPlayback = false,
+		String package,
+		this.filterQuality = FilterQuality.low,
+	})
+	```
+
+* new Image.file： 加载本地图片文件
+
+	```
+	Image.file(
+		File file, {
+		Key key,
+		double scale = 1.0,
+		this.frameBuilder,
+		this.semanticLabel,
+		this.excludeFromSemantics = false,
+		this.width,
+		this.height,
+		this.color,
+		this.colorBlendMode,
+		this.fit,
+		this.alignment = Alignment.center,
+		this.repeat = ImageRepeat.noRepeat,
+		this.centerSlice,
+		this.matchTextDirection = false,
+		this.gaplessPlayback = false,
+		this.filterQuality = FilterQuality.low,
+	})
+	```
+* new Image.network: 加载网络图片
+
+	```
+	Image.network(
+		String src, {
+		Key key,
+		double scale = 1.0,
+		this.frameBuilder,
+		this.loadingBuilder,
+		this.semanticLabel,
+		this.excludeFromSemantics = false,
+		this.width,
+		this.height,
+		this.color,
+		this.colorBlendMode,
+		this.fit,
+		this.alignment = Alignment.center,
+		this.repeat = ImageRepeat.noRepeat,
+		this.centerSlice,
+		this.matchTextDirection = false,
+		this.gaplessPlayback = false,
+		this.filterQuality = FilterQuality.low,
+		Map<String, String> headers,
+	})
+	```
+* new Image.memory: 加载内存Uint8List资源图片。
 
 > ### 参考
 
 * [基本组件之容器组件Container](https://www.cnblogs.com/lxlx1798/p/11058794.html)
 * [SizedOverflowBox、Transform、CustomSingleChildLayout详解](https://www.jianshu.com/p/4fe7573b1fc7)
 * [Container详解](https://www.jianshu.com/p/366b2446eaab)
-
+* [图片组件Image](https://www.cnblogs.com/lxlx1798/p/11060601.html)
+* [官方讲解Image](https://api.flutter.dev/flutter/widgets/Image-class.html)
 
 
 
