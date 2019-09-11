@@ -26,6 +26,7 @@
 
 > ### MeterialApp
 
+继承自StatefulWidget
 
 1. navigatorKey 
 
@@ -257,6 +258,7 @@
 
 > ### Scaffold
 
+继承自StatefulWidget
 
 1. appBar
 
@@ -340,6 +342,8 @@
 
 
 > ### AppBar
+
+继承自 StatefulWidget 并实现接口 PreferredSizeWidget
 
 1. leading
 
