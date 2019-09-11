@@ -3,6 +3,8 @@
 
 > ### Container
 
+继承自StatelessWidget
+
 * Container是一种常用控件，由负责布局、绘画、定位和大小调整的几个控件组成
 * 具体为LimitedBox、ConstrainedBox、Align、Padding、DecoratedBox、Transform组成，而不是Container子类化
 * 继承关系 Object > Diagnosticable > DiagnosticableTree > Widget > StatelessWidget > Container
@@ -43,11 +45,68 @@
 11. child
 	* 子组件
 
+> ### Text
+
+继承自StatelessWidget
+
+1. data
+
+* String,内容文字
+
+2. style
+
+* 样式,常用color(颜色),fontSize(字号，默认10),fontFamily(字体)
+
+3. strutStyle
+
+
+
+4. textAlign
+
+* 文本对齐方式[left,right,center,justify,start,end(文本开头/结尾，和textDirection有关)]
+
+5. textDirection
+
+* 文本方向,rtl(从右向左),ltr(从左向右)
+
+6. locale
+
+
+
+7. softWrap
+
+
+
+8. overflow
+
+* 超出是否换行,true换行，false不换行
+
+9. textScaleFactor
+
+
+
+10. maxLines
+
+* 最大显示行数
+
+11. semanticsLabel
+
+
+
+12. textWidthBasis,
+
+
+> ### Image
+
+继承自StatefulWidget
+
 
 
 > ### 参考
 
 * [基本组件之容器组件Container](https://www.cnblogs.com/lxlx1798/p/11058794.html)
+* [SizedOverflowBox、Transform、CustomSingleChildLayout详解](https://www.jianshu.com/p/4fe7573b1fc7)
+* [Container详解](https://www.jianshu.com/p/366b2446eaab)
 
 
 
@@ -60,3 +119,7 @@
 [Flutter中的国际化：如何写一个多语言的App](https://blog.csdn.net/yumi0629/article/details/81873141)   
 [Flutter 中的国际化](https://www.jianshu.com/p/8356a3bc8f6c)
 
+
+
+[上一页 Flutter8 widget、MeterialApp、Scaffold、AppBar](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter008.md)   
+[下一页 Flutter10 ](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter010.md) 
