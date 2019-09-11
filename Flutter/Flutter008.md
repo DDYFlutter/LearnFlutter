@@ -339,9 +339,130 @@
 17. drawerScrimColor
 
 
+> ### AppBar
+
+1. leading
+
+* Widget,标题左边显示的一个控件(二级界面一般为返回按钮)
+
+2. automaticallyImplyLeading = true
+
+
+3. title
+
+* Widget,通常为当前页面标题
+
+4. actions
+
+* List<Widget>,Widget列表，代表所显示的菜单，通常用IconButton表示
+* 也可用PopupMenuButton方式弹出二级菜单
+
+5. flexibleSpace
+
+* Widget,可理解成标题底部和TabBar导航菜单顶部之间一种控件
+* 通常用在SliverAppBar时实现特殊效果
+
+6. bottom
+
+* PreferredSizeWidget,通常是TabBar导航菜单
+
+7. elevation
+
+* double,控件z坐标顺序，默认4
+* 对于可滚动SliverAppBar,当SliverAppBar和内容同级，该值为0
+* 当内容滚动，SliverAppBar变到ToolBar,修改elevation值
+
+8. shape
+
+
+9. backgroundColor
+
+* Color,AppBar颜色，默认为ThemeData.primaryColor值
+* 通常和brightness、iconTheme、textTheme一起使用
+
+10. brightness
+
+* Brightness,AppBar亮度，有白色和黑色两种主题
+* 默认ThemeData.primaryColorBrightness
+
+11. iconTheme
+
+* IconThemeData,AppBar上图标颜色，透明度，尺寸等信息
+* 默认ThemeData.primaryIconTheme
+
+12. actionsIconTheme
+
+
+13. textTheme
+
+* TextTheme,AppBar上文字样式
+
+14. primary = true
+
+
+15. centerTitle
+
+* bool,标题是否居中显示，可以根据不同系统显示不同方式
+
+16. titleSpacing = NavigationToolbar.kMiddleSpacing
+
+
+17. toolbarOpacity = 1.0
+
+
+18. bottomOpacity = 1.0,
+
+	```
+	// 返回每个隐藏的菜单项
+	SelectView(IconData icon, String text, String id) {
+	    return new PopupMenuItem<String>(
+	        value: id,
+	        child: new Row(
+	            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+	            children: <Widget>[
+	                new Icon(icon, color: Colors.blue),
+	                new Text(text),
+	            ],
+	        )
+	    );
+	}
+	
+	appBar: new AppBar(
+	    title: new Text('首页'),
+	    leading: new Icon(Icons.home),
+	    backgroundColor: Colors.blue,
+	    centerTitle: true,
+	    actions: <Widget>[
+	        // 非隐藏的菜单
+	        new IconButton(
+	            icon: new Icon(Icons.add_alarm),
+	            tooltip: 'Add Alarm',
+	            onPressed: () {}
+	        ),
+	        // 隐藏的菜单
+	        new PopupMenuButton<String>(
+	            itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
+	                this.SelectView(Icons.message, '发起群聊', 'A'),
+	                this.SelectView(Icons.group_add, '添加服务', 'B'),
+	                this.SelectView(Icons.cast_connected, '扫一扫码', 'C'),
+	            ],
+	            onSelected: (String action) {
+	                // 点击选项的时候
+	                switch (action) {
+	                    case 'A': break;
+	                    case 'B': break;
+	                    case 'C': break;
+	                }
+	            },
+	        ),
+	    ],
+	),
+	```
+
 > ### 参考
 
 * [Material Design设计规范](https://www.uisdc.com/material-design-knowledge)
+* [Flutter AppBar 顶端栏](https://www.jianshu.com/p/77f8b7ee8460)
 
 
 [Flutter7](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter007.md)
