@@ -27,9 +27,9 @@
 
 	```
 	// 命名参数 {}包装(从尾部参数开始)，调用时也得指定参数名
-  	fullName4(var firstName, {Object lastName}) => "$firstName $lastName";
+  	fullName4(var firstName, {@required Object lastName, int age}) => "$firstName $lastName";
 	
-	// 调用并打印返回值 
+	// 调用并打印返回值 @required表示必须有
 	print(fullName4("Li", lastName: "Bai")); // Li Bai
 	```
 * 可选参数(中括号[]包装，命名参数是特殊可选参数用大括号{]包装) 
