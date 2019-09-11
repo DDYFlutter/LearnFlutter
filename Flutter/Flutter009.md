@@ -55,7 +55,34 @@
 
 2. style
 
-* 样式,常用color(颜色),fontSize(字号，默认10),fontFamily(字体)
+* 装饰物
+* color,颜色 Color(0xFF000000)/Colors.black
+* decoration,样式
+	* TextDecoration.none 无，默认
+	* TextDecoration.overline 上划线
+	* TextDecoration.lineThrough 删除线
+	* TextDecoration.underline 下划线
+	* 也可调用 TextDecoration.combine() 传入集合设置多个装饰物  
+* decorationColor,装饰物颜色，Color对象
+* decorationStyle 设置装饰物的样式
+	* TextDecorationStyle.dashed 装饰线为虚线
+	* TextDecorationStyle.dotted 装饰线为点构成的线
+	* TextDecorationStyle.double 装饰线为两根线
+	* TextDecorationStyle.solid 装饰线为实心线
+	* TextDecorationStyle.wavy 装饰线为波浪线
+	* 也可调用 TextDecorationStyle.values()传入集合设置多种样式 
+* fontSize,double,字号，默认10.0
+* fontFamily,字体，自定义字体名字要搭配package使用
+* package,自定义字体包路径
+* fontStyle,字体样式
+	* FontStyle.italic 斜体
+	* FontStyle.normal 正常 
+* 字体字重
+	* FontWeight.bold 加粗
+* inherit,true使用父类样式，false默认白色，10.0px,sans-serif
+* letterSpacing，double,字间距
+* wordSpacing，double,词间距
+* height,double,行高系数，该值乘以fontSize作为行高
 
 3. strutStyle
 
@@ -68,39 +95,89 @@
 5. textDirection
 
 * 文本方向,rtl(从右向左),ltr(从左向右)
+* TextAlign.start 时设置rtl，相当于又把 textAlign 设置为 TextAlign.end
+* TextAlign.end 时设置rtl，相当于又把 textAlign 设置为 TextAlign.start
 
 6. locale
 
-
+* 文本区域Locale('zh', 'CH')
 
 7. softWrap
 
-
+* 超出是否换行,true换行，false不换行
 
 8. overflow
 
-* 超出是否换行,true换行，false不换行
+* 超出文本处理
+* TextOverflow.clip 直接切断，剩余文字没有了
+* TextOverflow.fade 超出部分进行渐变消失效果(softWrap:false才有效果)
+* TextOverflow.ellipsis 显示为省略号
+* TextOverflow.visible 在容器外也呈现
 
 9. textScaleFactor
 
-
+* double,缩放因子
 
 10. maxLines
 
-* 最大显示行数
+* int,最大显示行数
 
 11. semanticsLabel
 
-
+* String,图像的语义描述,向Andoid上TalkBack和iOS上VoiceOver提供图像描述
 
 12. textWidthBasis,
 
+
+13. 富文本 Text.rich()
+
+	```
+	const Text.rich(
+		this.textSpan, {
+		Key key,
+		this.style,
+		this.strutStyle,
+		this.textAlign,
+		this.textDirection,
+		this.locale,
+		this.softWrap,
+		this.overflow,
+		this.textScaleFactor,
+		this.maxLines,
+		this.semanticsLabel,
+		this.textWidthBasis,
+	})
+	```
+
+14. 富文本 new RichText()
+
+	```
+	RichText({
+		Key key,
+		@required this.text,
+		this.textAlign = TextAlign.start,
+		this.textDirection,
+		this.softWrap = true,
+		this.overflow = TextOverflow.clip,
+		this.textScaleFactor = 1.0,
+		this.maxLines,
+		this.locale,
+		this.strutStyle,
+		this.textWidthBasis = TextWidthBasis.parent,
+	})
+	```
 
 > ### Image
 
 继承自StatefulWidget
 
-
+* 继承关系 Object > Diagnosticablet > DiagnosticableTreet > Widgett > StatefulWidgett > Image
+* 支持的格式jpeg、png、gif、webP、bmp、webmp
+* new Image: 从ImageProvider获取图像。
+* new Image.asset: 加载本地图片文件。
+* new Image.file： 加载本地图片文件。
+* new Image.network: 加载网络图片。
+* new Image.memory: 加载Uint8List资源图片。
 
 > ### 参考
 
