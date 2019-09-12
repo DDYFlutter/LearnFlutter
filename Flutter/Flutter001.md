@@ -114,7 +114,7 @@
 	```
 7. 使配置生效 ``` source ~/.bash_profile ```
 8. 查看是否成功 ``` flutter --version ```
-9. 安装依赖 ``` flutter doctor ``` 有叉号提示的需要执行提示命令
+9. 安装依赖 ``` flutter doctor ``` 有叉号或警告提示的需要执行提示命令，如 ```run flutter doctor --android-licenses```
 
 	```
 	flutter doctor --android-licenses
