@@ -13,15 +13,29 @@
 
 1. alignment
 	* AlignmentGermetry，实现类为Alignment,控制child对齐方式
-	* Alignment.topCenter 顶部居中对齐
-	* Alignment.topLeft 顶部左对齐
-	* Alignment.topRight 顶部右对齐
-	* Alignment.center 垂直居中水平居中对齐
-	* Alignment.centerLeft 垂直居中水平居左对齐
-	* Alignment.centerRight 垂直居中水平居右对齐
-	* Alignment.bottomCenter 底部居中对齐
-	* Alignment.bottomLeft 底部居左对齐
-	* Alignment.bottomRight 底部居右对齐
+	* Alignment.topLeft 顶部左对齐 Alignment(-1.0, -1.0)
+	* Alignment.topCenter 顶部居中对齐 Alignment(0.0, -1.0)
+	* Alignment.topRight 顶部右对齐 Alignment(1.0, -1.0)
+	* Alignment.centerLeft 垂直居中水平居左对齐 Alignment(-1.0, 0.0)
+	* Alignment.center 垂直居中水平居中对齐 Alignment(0.0, 0.0)
+	* Alignment.centerRight 垂直居中水平居右对齐 Alignment(1.0, 0.0)
+	* Alignment.bottomLeft 底部居左对齐 Alignment(-1.0, 1.0)
+	* Alignment.bottomCenter 底部居中对齐 Alignment(0.0, 1.0)
+	* Alignment.bottomRight 底部居右对齐 Alignment(1.0, 1.0)
+	* Alignment原点为父组件中心(左为x正方向，下为x负方向，x[-1, 1], y[-1, 1])
+	* FractionalOffset原点为父组件左上角，所以Alignment.center等价于FractionalOffset(0.5, 0.5)
+	* TextDirection.ltr时
+	* AlignmentDirectional方式可能会与TextDirection相关(有Text要注意)
+	* AlignmentDirectional.bottomCenter：底边中点
+	* AlignmentDirectional.bottomEnd:右下角
+	* AlignmentDirectional.bottomStart:左下角
+	* AlignmentDirectional.center：垂直中心点
+	* AlignmentDirectional.centerEnd：右边中点
+	* AlignmentDirectional.centerStart：左边中点
+	* AlignmentDirectional.topCenter：上边中点
+	* AlignmentDirectional.topEnd：右上角
+	* AlignmentDirectional.topEnd : 左上角
+
 2. padding
 	* 内边距
 3. color
@@ -36,14 +50,56 @@
 7. height
 	* double 高
 8. constraints
-	* BoxConstraints 添加到child上额外的约束条件
+	* BoxConstraints 添加到child上额外约束条件，指定组件占据空间大小的属性
+	* BoxConstraint只关注minWidth、maxWidth、minHeight和maxHeight
+	* 如果想把Container扩大，可使用expand()函数
+
+	```
+	// Container没子控件，只能占据maxWidth和maxHeight指定的空间
+	Container(
+	  color: Colors.green,
+	  constraints: BoxConstraints(
+	    maxHeight: 300.0,
+	    maxWidth: 200.0,
+	    minWidth: 150.0,
+	    minHeight: 150.0
+	  ),
+	),
+	
+	// Container有子控件，只能指定的空间(不小于最小值且不大于最大值)
+
+	Container(
+	  color: Color.fromARGB(255, 66, 165, 245),
+	  alignment: AlignmentDirectional(0.0, 0.0),
+	  child: Container(
+	    color: Colors.green,
+	    child: Text("Flutter Cheatsheet Flutter Cheatsheet"),
+	    constraints: BoxConstraints(
+	      maxHeight: 300.0,
+	      maxWidth: 200.0,
+	      minWidth: 150.0,
+	      minHeight: 150.0
+	    ),
+	  ),
+	),
+	
+	// 单纯扩大,会扩大到最大
+	constraints: BoxConstraints.expand(),
+	// 可以指定宽高
+	constraints: BoxConstraints.expand(width: 350.0,height: 400.0)
+	```
+
 9. margin
-	* 外边距
+	* 外边距，一般用EdgetInsets
+	* 四周都加上特定边距 margin: EdgeInsets.all(20.0)
+	* 横竖不同边距 EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0)
+	* 左上右下不同边距 EdgeInsets.fromLTRB(20.0, 30.0, 40.0, 50.0)
 10. transform
 	* 设置container的变换矩阵，类型为Matrix4
 	* 可按需调整旋转角度，如 transform: Matrix4.rotationZ(0.2)
 11. child
-	* 子组件
+	* 子组件，Container只能有一个子组件
+	* 若想布局多个子组件，可用如Row、Column或Stack等，可将组件添加到children
 
 > ### Text
 
@@ -397,6 +453,9 @@
 	  radius: 50.0,
 	)
 	```
+* 渐入或占位 FadeInImage
+
+
 
 > ### 参考
 
