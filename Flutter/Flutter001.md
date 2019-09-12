@@ -15,7 +15,7 @@
 	
 * 安装AndroidStudio 
 
-1. 下载最新版[AndroidStudio](http://www.maczapp.com/15045849668668),  国内[网站](http://www.android-studio.org)或爬梯[官网](https://developer.android.com/studio/index.html)
+1. 下载最新版[AndroidStudio](http://www.maczapp.com/15045849668668),  国内直访[网站](http://www.android-studio.org) / [网站2](https://developer.android.google.cn/studio) / [网站3](https://mac.softpedia.com/get/Development/Editors/Android-Studio.shtml#download)或爬梯[官网](https://developer.android.com/studio/index.html)
 2. 不需要像windows那样配置环境变量，直接拖动安装，打开(不发送统计信息，不导入配置，cancel不能连接SDK,一路默认next，一直到下载完相关组件)
 3. 欢迎界面选择 configure -> plugins -> 分别搜索Dart Flutter进行安装
 
