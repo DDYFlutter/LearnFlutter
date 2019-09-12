@@ -12,7 +12,7 @@
 * 参数
 
 1. alignment
-	* 控制child对齐方式
+	* AlignmentGermetry，实现类为Alignment,控制child对齐方式
 	* Alignment.topCenter 顶部居中对齐
 	* Alignment.topLeft 顶部左对齐
 	* Alignment.topRight 顶部右对齐
@@ -272,6 +272,93 @@
 	})
 	```
 * new Image.memory: 加载内存Uint8List资源图片。
+
+	```
+	Image.memory(
+		Uint8List bytes, {
+		Key key,
+		double scale = 1.0,
+		this.frameBuilder,
+		this.semanticLabel,
+		this.excludeFromSemantics = false,
+		this.width,
+		this.height,
+		this.color,
+		this.colorBlendMode,
+		this.fit,
+		this.alignment = Alignment.center,
+		this.repeat = ImageRepeat.noRepeat,
+		this.centerSlice,
+		this.matchTextDirection = false,
+		this.gaplessPlayback = false,
+		this.filterQuality = FilterQuality.low,
+	})
+	```
+
+* 主要参数详解
+
+1. image 
+
+	* ImageProvider，ImageProvider实现类有AssetBundleImageProvider(子类AssetImage),FileImage,MemoryImage,NetworkImage
+	* AssetImage需要配置pubSpec.yaml文件
+	```
+	flutter:
+		
+		assets:
+			- images/xxx.png
+			- images/2.0x/xxx.png
+			- images/3.0x/xxx.png
+	```
+	
+2. colorBlendMode
+
+	* color属性会覆盖image,可设置colorBlendMode属性与image混合
+	* BlendMode枚举，默认BlendMode.srcIn
+
+3. excludeFromSemantic
+
+	* 包括图像语义描述
+
+4. fit
+
+	* BoxFit，图片布局方式
+	* BoxFit.fill, 不按比例缩放铺满控件，类似Android的fitXY
+	* BoxFit.contain, 按比例缩放完整居中显示，类似Android的centerInside
+	* BoxFit.cover, 按比例放大居中显示，类似Android的centerCrop
+	* BoxFit.fitWidth, 把高按照组件的高显示，宽等比例缩放
+	* BoxFit.fitHeight, 把宽按照组件的宽显示，高等比例缩放
+	* BoxFit.none, 将图片的内容按原大小居中显示
+	* BoxFit.scaleDown, 若宽高大于组件宽高同contain，若宽高小于组件宽高同none。
+
+5. centerSlice
+
+	* Rect,中心拉伸，如 centerSlice: Rect.fromLTWH(10, 10, 10, 10)
+
+6. gaplessPlayback
+
+	* bool, true保留旧图到新图显示，false则不保留，显示新图过程空白
+
+7. repeat
+
+	* ImageRepeat，小图填充时重复方式
+	* repeat, x,y轴方向都重复
+	* repeatX, 只x轴方向重复
+	* repeatY, 只y轴方向重复
+	* noRepeat, 只单图，不重复
+
+* 圆角
+
+1. 使用裁剪方式
+
+```
+new ClipRRect(
+  child: Image.network(imageUrl),
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(20),
+    topRight: Radius.circular(20),
+  ),
+)
+```
 
 > ### 参考
 
