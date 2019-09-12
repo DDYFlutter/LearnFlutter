@@ -408,15 +408,5 @@
 
 
 
-
-
-
-
-
-[Flutter中的国际化：如何写一个多语言的App](https://blog.csdn.net/yumi0629/article/details/81873141)   
-[Flutter 中的国际化](https://www.jianshu.com/p/8356a3bc8f6c)
-
-
-
 [上一页 Flutter8 widget、MeterialApp、Scaffold、AppBar](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter008.md)   
-[下一页 Flutter10 ](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter010.md) 
+[下一页 Flutter10 Icon、Tabbar、BottomNavigationBar](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter010.md) 
