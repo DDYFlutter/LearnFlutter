@@ -350,15 +350,53 @@
 
 1. 使用裁剪方式
 
-```
-new ClipRRect(
-  child: Image.network(imageUrl),
-  borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(20),
-    topRight: Radius.circular(20),
-  ),
-)
-```
+	```
+	new ClipRRect(
+	  child: Image.network(imageUrl),
+	  borderRadius: BorderRadius.only(
+	    topLeft: Radius.circular(20),
+	    topRight: Radius.circular(20),
+	  ),
+	)
+	```
+
+2. 使用边框方式
+
+	```
+	new Container(
+	  width: 120,
+	  height: 60,
+	  decoration: BoxDecoration(
+	    shape: BoxShape.rectangle,
+	    borderRadius: BorderRadius.circular(10.0),
+	    image: DecorationImage(
+	        image: NetworkImage(imageUrl),
+	        fit: BoxFit.cover), // 该方式要设置fit
+	  ),
+	)
+	```
+* 原形
+
+1. 使用裁剪方式
+
+	```
+	new ClipOval(
+	    child: Image.network(
+	    imageUrl,
+	    scale: 8.5,
+	  ),
+	)
+	```
+
+
+2. 使用CircleAvatar 
+
+	```
+	new CircleAvatar(
+	  backgroundImage: NetworkImage(imageUrl),
+	  radius: 50.0,
+	)
+	```
 
 > ### 参考
 
