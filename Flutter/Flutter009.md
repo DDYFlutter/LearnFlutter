@@ -222,6 +222,32 @@
 		this.textWidthBasis = TextWidthBasis.parent,
 	})
 	```
+15. SelectableText 内容可选择的文本
+
+    ```
+    const SelectableText(
+        this.data, {
+        Key key,
+        this.focusNode,
+        this.style,
+        this.strutStyle,
+        this.textAlign,
+        this.textDirection,
+        this.showCursor = false,
+        this.autofocus = false,
+        ToolbarOptions toolbarOptions,
+        this.maxLines,
+        this.cursorWidth = 2.0,
+        this.cursorRadius,
+        this.cursorColor,
+        this.dragStartBehavior = DragStartBehavior.start,
+        this.enableInteractiveSelection = true,
+        this.onTap,
+        this.scrollPhysics,
+        this.textWidthBasis,
+      })
+    ```	
+
 
 > ### Image
 
