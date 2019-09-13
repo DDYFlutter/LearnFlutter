@@ -54,25 +54,25 @@
 	* 一般try{}catch{}能捕获到异常，但有时候无效
 	* Dart语言中有个zone概念，类似沙盒(sandbox),不同zone代码互不影响，zone还能创建子zone。zone可以重新定义自己的print,timer,microtasks等，还可以解决未捕获的异常
 
-```
-testZone() {
-  // 未捕获的异常
-  try {
-    Future.error('asynchronous error');
-  } catch(e) {
-    print(e);
-  }
-
-  // 将上面代码注释后用下面代码捕获异常	
-  runZoned((){
-    Future.error('asynchronous error');
-  }, onError: (Object obj, StackTrace stack){
-    // 这里可以调用日志上报函数
-    print(obj); // asynchronous error
-    print(stack); // null
-  });
-}
-```
+    ```
+    testZone() {
+      // 未捕获的异常
+      try {
+        Future.error('asynchronous error');
+      } catch(e) {
+        print(e);
+      }
+    
+      // 将上面代码注释后用下面代码捕获异常	
+      runZoned((){
+        Future.error('asynchronous error');
+      }, onError: (Object obj, StackTrace stack){
+        // 这里可以调用日志上报函数
+        print(obj); // asynchronous error
+        print(stack); // null
+      });
+    }
+    ```
 
 	* 可以给runZoned注册方法，在需要时回调
 
