@@ -305,60 +305,60 @@
 	```    
 
 * 工厂构造函数
+        
+    ```
+    // factory不总是创建新实例(如可能从缓存中返回实例或返回子类型实例)
+    class DDYLogger {
+      final String logKey;
+      static final _cache = new Map<String, DDYLogger>();
     
-```
-// factory不总是创建新实例(如可能从缓存中返回实例或返回子类型实例)
-class DDYLogger {
-  final String logKey;
-  static final _cache = new Map<String, DDYLogger>();
-
-  factory DDYLogger(String logKey) {
-    if (_cache.containsKey(logKey)) {
-      return _cache[logKey];
-    } else {
-      final logger = DDYLogger._init(logKey);
-      _cache[logKey] = logger;
-      return logger;
+      factory DDYLogger(String logKey) {
+        if (_cache.containsKey(logKey)) {
+          return _cache[logKey];
+        } else {
+          final logger = DDYLogger._init(logKey);
+          _cache[logKey] = logger;
+          return logger;
+        }
+      }
+    
+      DDYLogger._init(this.logKey);
     }
-  }
-
-  DDYLogger._init(this.logKey);
-}
-```    
+    ```    
 
 * 静态构造函数
 
-```
-class Student {
-  final String name;
-  final int age;
-
-  const Student(this.name, this.age);
-}
-
-
-// 测试
-var student1 = const Student('LiLei', 18);
-var student2 = const Student('LiLei', 18);
-var student3 = Student('LiLei', 18);
-// identical(obj1, obj2) 比较是否一个对象
-print(identical(student1, student2)); // true
-print(identical(student1, student3)); // false
-print(student1 == student2); // true
-print(student1 == student3); // false
-
-const studentClass1 = [Student('LiLei', 18), Student('LiLei', 18)];
-print('${studentClass1[0] == studentClass1[1]}'); // true
-print('${identical(studentClass1[0], studentClass1[1])}'); // ture
-// 等于了 const studentClass = const [const Student('LiLei', 18), const Student('LiLei', 18)];
-
-var studentClass2 = const [Student('LiLei', 18), Student('LiLei', 18)];
-print('${studentClass2[0] == studentClass2[1]}'); // true
-print('${identical(studentClass2[0], studentClass2[1])}'); // ture
-
-print(studentClass1 == studentClass2); // ture
-print(identical(studentClass1, studentClass2)); // ture
-```
+    ```
+    class Student {
+      final String name;
+      final int age;
+    
+      const Student(this.name, this.age);
+    }
+    
+    
+    // 测试
+    var student1 = const Student('LiLei', 18);
+    var student2 = const Student('LiLei', 18);
+    var student3 = Student('LiLei', 18);
+    // identical(obj1, obj2) 比较是否一个对象
+    print(identical(student1, student2)); // true
+    print(identical(student1, student3)); // false
+    print(student1 == student2); // true
+    print(student1 == student3); // false
+    
+    const studentClass1 = [Student('LiLei', 18), Student('LiLei', 18)];
+    print('${studentClass1[0] == studentClass1[1]}'); // true
+    print('${identical(studentClass1[0], studentClass1[1])}'); // ture
+    // 等于了 const studentClass = const [const Student('LiLei', 18), const Student('LiLei', 18)];
+    
+    var studentClass2 = const [Student('LiLei', 18), Student('LiLei', 18)];
+    print('${studentClass2[0] == studentClass2[1]}'); // true
+    print('${identical(studentClass2[0], studentClass2[1])}'); // ture
+    
+    print(studentClass1 == studentClass2); // ture
+    print(identical(studentClass1, studentClass2)); // ture
+    ```
     
 * noSuchMethod()
 
