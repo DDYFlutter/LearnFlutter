@@ -27,7 +27,7 @@
 
 > ### Flutter Engine
 
-* 这是一个纯 C++实现的 SDK，其中囊括了 Skia引擎、Dart运行时、文字排版引擎等.
+* 这是一个纯 C++实现的 SDK，其中囊括了 Skia引擎、Dart运行时、Text文字排版引擎等.
 * 它可以以 JIT 或 AOT的模式运行 Dart代码。
 * 在代码调用 dart:ui库时，提供 dart:ui库中 Native Binding 实现。 
 * 他还控制着 VSync信号的传递、GPU数据的填充等，并且还负责把客户端的事件传递到运行时中的代码
