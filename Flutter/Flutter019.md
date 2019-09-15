@@ -130,7 +130,7 @@
     ```
 
 
-6. 定制路由
+6. 定制路由（自定义路由，自定义转场）
 
 
 * 继承路由子类，如：PopupRoute、ModalRoute 等
@@ -250,33 +250,64 @@
 2. 静态方法详解
 
 * pushNamed
-
 * pushReplacementNamed
-
 * popAndPushNamed
-
 * pushNamedAndRemoveUntil
-
 * push
-
 * pushReplacement
-
 * pushAndRemoveUntil
-
 * replace
-
 * replaceRouteBelow
-
 * canPop
-
 * maybePop
-
 * popUntil
-
 * removeRoute
-
 * removeRouteBelow
 
+##### push和pushName
+
+pushName结合配置routes,利用命名路由形式将指定页面实例(带固定参数)入栈，而push则是在需要跳转时生成要跳转的页面对象，传递想要的参数，两者运行效果没差别。
+
+##### pushReplacement和pushReplacementNamed
+
+两者都是取代栈顶元素，运行效果没差别。
+
+##### popAndPushNamed
+
+顾名思义，先pop然后push
+
+##### pushAndRemoveUntil 和 pushNamedAndRemoveUntil
+
+两者都是入栈新页面删除除该页面实例外其他栈内实例，将该实例作为新栈底，运行效果没差别。可用在注册登录页登录后跳转，防止能返回注册登录页
+
+##### canPop
+
+判断是否可以pop，如果可以返回true,否则返回false
+
+##### maybePop
+
+表示在该页面尝试pop，如果可以则pop到前一页，否则仍停在该页面，丢弃该次pop
+
+##### popUntil
+
+pop回栈内(该页面实例以下)指定页面实例，如 ``` Navigator.popUntil(context, ModalRoute.withName('/home')); ```,回到配置名为home的页面。
+
+
+> ### 其他知识点
+
+1. 去除返回按钮 AppBar中
+
+    ```
+    automaticalImplyLeading: false
+    ```
+
+2. Popup routes (弹出路由)
+
+路由不一定要遮挡整个屏幕。 PopupRoutes 使用 ModalRoute.barrierColor 覆盖屏幕，ModalRoute.barrierColor 只能部分不透明以允许当前屏幕显示。 弹出路由是“模态”的，因为它们阻止了对下面其他组件的输入。
+
+有一些方法可以创建和显示这类弹出路由。 例如：showDialog，showMenu 和 showModalBottomSheet。 如上所述，这些函数返回其推送路由的 Future（异步数据，参考下面的数据部分）。 执行可以等待返回的值在弹出路由时执行操作。
+
+还有一些组件可以创建弹出路由，如 PopupMenuButton 和 DropdownButton。 这些组件创建 PopupRoute 的内部子类，并使用 Navigator 的push 和 pop 方法来显示和关闭它们。
 
 
 > ### 参考
