@@ -449,6 +449,7 @@
 * [ListView基于数据动态渲染，横向和纵向列表嵌套](http://www.ptbird.cn/flutter-listview-listview-builder.html)
 * [ListView](https://www.jianshu.com/p/8ae901efdebc)
 * [ListView 列表进阶](https://www.jianshu.com/p/e6dafb114855)
+* [Flutter学习中的问题记录: ListView.builder](https://www.jianshu.com/p/e06a256e6109)
 
 https://juejin.im/post/5bab35ff5188255c3272c228
 http://codingdict.com/blog/article/2019/2/11/795.html
