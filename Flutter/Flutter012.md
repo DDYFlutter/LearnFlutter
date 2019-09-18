@@ -439,10 +439,6 @@
     })
     ```
 
-
-> ### GridView、
-
-
 > ### 参考
 
 * [基本组件之基本列表LisetView组件](https://www.cnblogs.com/lxlx1798/p/11063520.html)
@@ -450,6 +446,7 @@
 * [ListView](https://www.jianshu.com/p/8ae901efdebc)
 * [ListView 列表进阶](https://www.jianshu.com/p/e6dafb114855)
 * [Flutter学习中的问题记录: ListView.builder](https://www.jianshu.com/p/e06a256e6109)
+* [Flutter ListBody](http://codingdict.com/blog/article/2019/2/11/795.html)
+* [.](https://juejin.im/post/5bab35ff5188255c3272c228)
 
-https://juejin.im/post/5bab35ff5188255c3272c228
-http://codingdict.com/blog/article/2019/2/11/795.html
+
