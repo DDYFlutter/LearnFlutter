@@ -95,7 +95,7 @@
 * 简介
 
 	* Dart是单线程模型，默认单线程处理任务。
-	* Dart中有个介于进程和线程之间的概念被称为Worker-Isolate(实际更偏向进程概念)，但一般理解成带有独立内存的线程，防止歧义，统一称作Isolate、隔离。
+	* Dart中有个不同于进程、线程及协程的概念被称为Worker-Isolate，一般理解成带有独立内存的线程，防止歧义，统一称作Isolate、隔离。
 	* Dart中Isolate不等同于线程，Isolate有线程和独立内存构成，又比进程低级
 	* Dart中的异步机制涉及到的关键字有Future、async、await、async、sync、Iterator、Iterable、Stream、Timer等
 	* Dart异步调用中async和await要配套使用,且await可以多个。
