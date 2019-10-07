@@ -4,7 +4,7 @@
 
 > ### 准备
 
-* 安装Xcode
+* ##### 安装Xcode(一定执行)
 
 1. 下载最新版[Xcode](https://developer.apple.com/download/more)
 2. 安装并同意协议后打开(这里默认名字Xcode.app，下同)
@@ -13,14 +13,14 @@
 5. 输入 ``` sudo xcode-select --print-path ``` 查看Xcode路径
 6. 在Xcode.xip所在目录执行 ``` xattr -d com.apple.quarantine Xcode_11.xip ``` 解除验证
 	
-* 安装AndroidStudio 
+* ##### 安装AndroidStudio(一定执行)
 
 1. 下载最新版[AndroidStudio](http://www.maczapp.com/15045849668668),  国内直访[网站](http://www.android-studio.org) / [网站2](https://developer.android.google.cn/studio) / [网站3](https://mac.softpedia.com/get/Development/Editors/Android-Studio.shtml#download)或爬梯[官网](https://developer.android.com/studio/index.html)
 2. 不需要像windows那样配置环境变量，直接拖动安装，打开(不发送统计信息，不导入配置，cancel不能连接SDK,一路默认next，一直到下载完相关组件)
 3. 欢迎界面选择 configure -> plugins -> 分别搜索Dart Flutter进行安装
 
 
-* 升级homebrew (可能用到)
+* ##### 升级homebrew (可能用到，按需执行)
 
 1. 查看版本 ``` brew --version ```
 2. 卸载brew ``` ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" ```  
@@ -44,7 +44,7 @@
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	```
 
-* 升级rvm (可能用到)
+* ##### 升级rvm (可能用到，按需执行)
 	
 1. 查看版本 ``` rvm --version ```
 2. 升级RVM ``` curl -L https://get.rvm.io | bash -s stable ```
@@ -53,7 +53,7 @@
 5. 查看版本 ``` rvm --version ```
 6. 安装目录 ``` which rvm ```
 
-* 升级ruby (可能用到)
+* ##### 升级ruby (可能用到，按需执行)
 
 1. 查看版本 ``` ruby --version ```
 2. 已知版本 ``` rvm list known ```
@@ -63,14 +63,14 @@
 6. 删除多余 ``` rvm remove 2.0.0 ```
 7. 安装目录 ``` which ruby ```
 
-* 手动安装ruby (可能用到，如果上面方法失败用)
+* ##### 手动安装ruby (可能用到，按需执行，如果上面方法失败用)
 	
 1. 下载ruby [ruby下载地址](http://www.ruby-lang.org/en/downloads/)
 2. 进入解压文件夹执行 ``` ./configure ```
 3. 编译 ``` sudo make ```
 4. 安装 ``` sudo make install ```
 
-* 升级openssl (可能用到)
+* ##### 升级openssl (可能用到，按需执行)
 	
 1. 查看版本 ``` openssl version ```
 2. 升级版本 ``` brew upgrade openssl ```
@@ -78,13 +78,13 @@
 4. 查看版本 ``` openssl version ```
 5. 安装目录 ``` which openssl ```
 
-* 升级gem (可能用到)
+* ##### 升级gem (可能用到，按需执行)
 	
 1. 查看版本 ``` gem --version ```
 2. 升级版本 ``` gem update --system ``` 
 3. 查看版本 ``` gem --version ```
 
-* 升级cocoaPods (可能用到)
+* ##### 升级cocoaPods (可能用到，按需执行)
 	
 1. 查看版本 ``` pod --version ```
 2. 升级版本 ``` sudo gem update cocoapods ```
@@ -141,9 +141,14 @@
 	```
 	然后执行 '升级homebrew' 的命令
 
+* FlutterSDK打包文件加速下载
+    
+    * [flutter_windows_v1.9.1+hotfix.2-stable](https://storage.flutter-io.cn/flutter_infra/releases/stable/windows/flutter_windows_v1.9.1+hotfix.2-stable.zip)  
+    * [flutter_macos_v1.9.1+hotfix.2-stable](https://storage.flutter-io.cn/flutter_infra/releases/stable/macos/flutter_macos_v1.9.1+hotfix.2-stable.zip)
+    * [flutter_linux_v1.9.1+hotfix.2-stable](https://storage.flutter-io.cn/flutter_infra/releases/stable/linux/flutter_linux_v1.9.1+hotfix.2-stable.tar.xz)
 
 
-
+* [CocoaPods setup加速](https://juejin.im/post/5d8f10def265da5b8c03ab33)
 
 > ### 参考
 
