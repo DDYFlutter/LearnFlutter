@@ -2,43 +2,39 @@
 
 # 环境搭建 
 
+由于版本迭代，搭建环境过程可能大同小异，20200801更新，可参考[Flutter中文官网](https://flutter.cn/docs/get-started/install/macos)
+
 > ### 准备
 
-* ##### 安装Xcode(一定执行)
+* ##### 安装Xcode(一定执行，最好最新release版)
 
 1. 下载最新版[Xcode](https://developer.apple.com/download/more)
 2. 安装并同意协议后打开(这里默认名字Xcode.app，下同)
 3. 打开Xcode，按快捷键 'command' + '<'，进入设置面板，找到locations，选择高版本Command Line Tools
 4. 执行 ``` sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer ```
 5. 输入 ``` sudo xcode-select --print-path ``` 查看Xcode路径
-6. 在Xcode.xip所在目录执行 ``` xattr -d com.apple.quarantine Xcode_11.xip ``` 解除验证
+6. 在Xcode.xip所在目录执行 ``` xattr -d com.apple.quarantine Xcode.xip ``` 解除验证
 	
 * ##### 安装AndroidStudio(一定执行)
 
-1. 下载最新版[AndroidStudio](http://www.maczapp.com/15045849668668),  国内直访[网站](http://www.android-studio.org) / [网站2](https://developer.android.google.cn/studio) / [网站3](https://mac.softpedia.com/get/Development/Editors/Android-Studio.shtml#download)或爬梯[官网](https://developer.android.com/studio/index.html)
+1. 下载最新版[AndroidStudio](https://developer.android.google.cn/studio)
 2. 不需要像windows那样配置环境变量，直接拖动安装，打开(不发送统计信息，不导入配置，cancel不能连接SDK,一路默认next，一直到下载完相关组件)
 3. 欢迎界面选择 configure -> plugins -> 分别搜索Dart Flutter进行安装
 
+* ##### 安装JDK (可能用到，如果用到java编译则执行)
 
-* ##### 升级homebrew (可能用到，按需执行)
+1. 下载[JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html),这里JDK8
+2. 共享的Oracle账号密码 2696671285@qq.com Oracle123 amador.sun@foxmail.com 1211WaN! amador.sun@qq.com 1211WaN!
+3. 安装JDK
+
+* ##### 升级homebrew (可能用到，按需执行，早晨较快)
 
 1. 查看版本 ``` brew --version ```
 2. 卸载brew ``` ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" ```  
 3. 安装brew ``` ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ```
 4. 查看版本 ``` brew --version ``` 
 5. 安装目录	 ``` which brew ```
-6. 执行下面代码 
-
-	```
-	brew update
-	brew install --HEAD usbmuxd
-	brew link usbmuxd
-	brew install --HEAD libimobiledevice
-	brew install ideviceinstaller
-	brew install ios-deploy
-	```
-7. 如果Xcode 版本低,需要安装高版本(可以安装多版本然后选择高版本)
-8. 卸载重装可能需要加路径
+6. 加安装路径可以类似这样
 	```
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -96,8 +92,8 @@
 1. 下载[Flutter](https://flutter.dev/docs/get-started/install/macos)
 2. 创建flutter目录 ``` mkdir ~/flutter ```
 3. 进入flutter目录 ``` open ~/flutter ```
-4. 将步骤1下载的压缩包复制到创建的flutter目录并解压
-5. 打开环境变量描述文件 ``` open -e ~/.bash_profile ```
+4. 将步骤1下载的压缩包复制到创建的flutter目录并解压（如果用git管理则不下载压缩包而是直接克隆 ``` git clone https://github.com/flutter/flutter.git -b stable --depth 1 ```）
+5. 打开环境变量描述文件 ``` open -e ~/.bash_profile ``` （Catalina后，在 ~/.zshrc 添加：source ~/.bash_profile）
 6. 追加配置并保存
 	
 	```
@@ -140,12 +136,6 @@
 	brew unlink usbmuxd
 	```
 	然后执行 '升级homebrew' 的命令
-
-* FlutterSDK打包文件加速下载
-    
-    * [flutter_windows_v1.9.1+hotfix.2-stable](https://storage.flutter-io.cn/flutter_infra/releases/stable/windows/flutter_windows_v1.9.1+hotfix.2-stable.zip)  
-    * [flutter_macos_v1.9.1+hotfix.2-stable](https://storage.flutter-io.cn/flutter_infra/releases/stable/macos/flutter_macos_v1.9.1+hotfix.2-stable.zip)
-    * [flutter_linux_v1.9.1+hotfix.2-stable](https://storage.flutter-io.cn/flutter_infra/releases/stable/linux/flutter_linux_v1.9.1+hotfix.2-stable.tar.xz)
 
 
 * [CocoaPods setup加速](https://juejin.im/post/5d8f10def265da5b8c03ab33)
