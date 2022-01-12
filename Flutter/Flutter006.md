@@ -377,6 +377,7 @@
 	* pub upgrade(将所有依赖项升级到较新版本)
 	* pub build(用于构建Web应用程序，创建一个包含所有相关脚本的构建文件夹)
 	* pub help(将提供所有pub命令的帮助。)
+	* flutter packages get (获取包)
 
 2. 库
 

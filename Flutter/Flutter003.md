@@ -10,6 +10,12 @@
 * 声明变量 ``` var varName = "hello world"; ``` 
 * 明确指定数据类型方式定义变量 ``` int age = 18; ``` 
 * 双引号字符串，分号结尾
+* 单行注释 ``` // ```
+* 多行注释 ``` /*开始 */结束 ```
+* 文档注释 ``` /**开始 */结束 或者 /// ```
+* 下一步要做的注释标识 ``` // TODO: ```
+* 修复内容注释标识 ``` // FIXME: ```
+* 忽略 ``` // ignore: ```
 * 函数可以不显式声明返回类型(不写返回类型就成了dynamic类型，自动推导类型)，无return则void类型
 * static声明类变量
 * const和final声明常量，const只能通过静态数据赋值, final修饰的list、map仍可变
@@ -406,6 +412,8 @@
 > ### 参考文章
 
 * [Dart的基础语法](https://juejin.im/post/5d1d614df265da1b971a9177)
+* [了解 Unicode 在 Flutter 上的展示](https://www.jianshu.com/p/ba7fb4a651c7)
+* [Flutter学习之Dart语言注释](https://www.jianshu.com/p/d1dae0d5c472)
 
 
 [上一页 Flutter2 入门知识](https://github.com/DDYFlutter/LearnFlutter/blob/master/Flutter/Flutter002.md)    
