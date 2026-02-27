@@ -102,7 +102,7 @@
 	export PUB_HOSTED_URL=https://pub.flutter-io.cn
 	export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 	# 以实际bin目录为准
-	export PATH=~/flutter/flutter/bin:$PATH
+	export PATH=~/flutter/bin:$PATH
 	# 可添加Android相关配置
 	# export ANDROID_HOME="xxx/android_sdk 目录" 
   	# export PATH=${PATH}:${ANDROID_HOME}/tools
